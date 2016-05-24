@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 [RequireComponent (typeof(NavMeshAgent))]
 public class NavToWaypoint : MonoBehaviour
@@ -17,36 +16,38 @@ public class NavToWaypoint : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 	}
 
-	void Start ()
-	{
-		StartCoroutine(SetRandomWaypoint());
-	}
-
 	void Update ()
 	{
 		// Update destination if off from waypoint by more than one unit.
-		if ( waypoint && Vector3.Distance(transform.position, waypoint.position) > 0.2f && (destination == null || Vector3.Distance((Vector3)destination, waypoint.position) > 1.0f ))
+		if ( waypoint && 
+			Vector3.Distance(transform.position, waypoint.position) > 0.2f && 
+			(destination == null || Vector3.Distance((Vector3)destination, waypoint.position) > 1.0f ))
 		{
 			destination = waypoint.position;
 			agent.SetDestination((Vector3)destination);
 		}
 	}
 
-	IEnumerator SetRandomWaypoint()
-	{
-		while (true) 
-		{
-			yield return new WaitForSeconds(3);
-			ARENA.NavNodes attackNodes = arena.attackNodes;
-			List<Transform> nodeList = Random.Range(0f, 1f) < 0.2f ? attackNodes.close : attackNodes.far;
-			Transform targetNode = nodeList[Random.Range(0, nodeList.Count)];
-			SetWaypoint(targetNode);
-		}
-	}
-
 	public void SetWaypoint(Transform target)
 	{
 		waypoint = target;
+	}
+
+	// **** DEBUGGING ****
+
+	void Start () { StartCoroutine(SetRandomWaypoint()); }
+
+	IEnumerator SetRandomWaypoint ()
+	{
+		float secsToWait = Random.Range(0f, 2f);
+		while ( true )
+		{
+			yield return new WaitForSeconds(secsToWait);
+			int randomTier = Random.Range(0, arena.navNodes.Length);
+			secsToWait = (float) (randomTier + 1) * 2;
+			NavNode[] tierList = arena.navNodes[randomTier];
+			SetWaypoint(tierList[Random.Range(0, tierList.Length)].transform);
+		}
 	}
 
 	void OnDrawGizmos ()
