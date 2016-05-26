@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Component allowing any NavMeshAgent to be given a waypoint, and travel to it.
 [RequireComponent (typeof(NavMeshAgent))]
 public class NavToWaypoint : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class NavToWaypoint : MonoBehaviour
 
 	void Awake ()
 	{
-		arena = FindObjectOfType<ARENA>();
+		arena = GameCache.Arena;
 		agent = GetComponent<NavMeshAgent>();
 	}
 
@@ -33,23 +34,7 @@ public class NavToWaypoint : MonoBehaviour
 		waypoint = target;
 	}
 
-	// **** DEBUGGING ****
-
-	void Start () { StartCoroutine(SetRandomWaypoint()); }
-
-	IEnumerator SetRandomWaypoint ()
-	{
-		float secsToWait = Random.Range(0f, 2f);
-		while ( true )
-		{
-			yield return new WaitForSeconds(secsToWait);
-			int randomTier = Random.Range(0, arena.navNodes.Length);
-			secsToWait = (float) (randomTier + 1) * 2;
-			NavNode[] tierList = arena.navNodes[randomTier];
-			SetWaypoint(tierList[Random.Range(0, tierList.Length)].transform);
-		}
-	}
-
+	#region Debug Code
 	void OnDrawGizmos ()
 	{
 		if ( waypoint != null )
@@ -58,5 +43,5 @@ public class NavToWaypoint : MonoBehaviour
 			Gizmos.DrawSphere(waypoint.position, 0.3f);
 		}
 	}
-
+	#endregion
 }

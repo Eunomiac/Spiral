@@ -1,26 +1,46 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class NavNode : MonoBehaviour {
+public class Node : MonoBehaviour {
 
-	public List<NavNode> Neighbours = new List<NavNode>();
+public Text nodeLabel;
+
+	[HideInInspector]
+	public List<Node> Neighbours = new List<Node>();
 	
 	public float Angle { get; set; }
 	public int Tier { get; set; }
 	public int Index { get; set; }
 	public float RandomOffset { get; set; }
 
-	// **** DEBUGGING ****
+	private ARENA arena;
+	private Text label;
+
+	void Awake ()
+	{
+		arena = GameCache.Arena;
+	}
+
+	#region Debug Code
 
 	Color[] colorsByTier = new Color[8] { Color.red, Color.magenta, Color.cyan, Color.green, Color.gray, Color.yellow, Color.blue, Color.black };
 
-	void Start () { DrawNeighbourLines(FindObjectOfType<ARENA>().lineMaterial); }
+	void Start ()
+	{
+		GetComponent<SpriteRenderer>().color = colorsByTier[Tier];
+		//DrawNeighbourLines(arena.lineMaterial);
+	}
 
 	public void DrawNeighbourLines(Material material)
 	{
-		foreach (NavNode neighbour in Neighbours)
+		foreach (Transform child in transform)
+		{
+			Destroy(child.gameObject);
+		}
+		foreach (Node neighbour in Neighbours)
 		{
 			Color color = colorsByTier[Random.Range(0, 8)];
 			LineRenderer thisLine = new GameObject("Line T" + Tier + Index + " >> T" + neighbour.Tier + neighbour.Index, typeof(LineRenderer)).GetComponent<LineRenderer>();
@@ -34,10 +54,21 @@ public class NavNode : MonoBehaviour {
 			thisLine.transform.SetParent(transform);
 		}
 	}
-	
-	void OnDrawGizmos ()
-	{ 
-		Gizmos.color = colorsByTier[Tier];
-		Gizmos.DrawSphere(transform.position, 0.5f);
+
+	public void SetNodeLabel()
+	{
+		if (!label) 
+			label = Instantiate(nodeLabel);
+		label.rectTransform.SetParent(arena.GetComponentInChildren<Canvas>().transform, false);
+		label.rectTransform.anchoredPosition = new Vector2(transform.position.x, transform.position.z);
+		label.text = Index.ToString() + "\n" + Mathf.RoundToInt(Angle).ToString();
 	}
+
+	//void OnDrawGizmos ()
+	//{ 
+	//	Gizmos.color = colorsByTier[Tier];
+	//	Gizmos.DrawSphere(transform.position, 0.5f);
+	//}
+	#endregion
+
 }
