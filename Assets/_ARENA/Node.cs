@@ -8,31 +8,43 @@ public class Node : MonoBehaviour {
 
 public Text nodeLabel;
 
-	[HideInInspector]
+	//[HideInInspector]
 	public List<Node> Neighbours = new List<Node>();
 	
 	public float Angle { get; set; }
 	public int Tier { get; set; }
 	public int Index { get; set; }
 	public float RandomOffset { get; set; }
+	public GameObject Occupant { get; set; }
 
 	private ARENA arena;
 	private Text label;
 
 	void Awake ()
 	{
-		arena = GameCache.Arena;
+		arena = GAME.Arena;
+	}
+
+	void Start ()
+	{
+		if ( arena.showNodes ) GetComponent<SpriteRenderer>().color = colorsByTier[Tier];			// Debug
+	}
+
+	public bool Claim(GameObject occupant)
+	{
+		if ( Occupant == null )
+		{
+			Occupant = occupant;
+			return true;
+		} else
+			return false;
 	}
 
 	#region Debug Code
 
 	Color[] colorsByTier = new Color[8] { Color.red, Color.magenta, Color.cyan, Color.green, Color.gray, Color.yellow, Color.blue, Color.black };
 
-	void Start ()
-	{
-		GetComponent<SpriteRenderer>().color = colorsByTier[Tier];
-		//DrawNeighbourLines(arena.lineMaterial);
-	}
+
 
 	public void DrawNeighbourLines(Material material)
 	{

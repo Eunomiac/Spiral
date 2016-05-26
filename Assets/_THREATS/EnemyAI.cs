@@ -1,23 +1,54 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(NavToWaypoint))]
 public class EnemyAI : MonoBehaviour {
 
 	private THREATS threats;
 	private ARENA arena;
+	private NavToWaypoint navigate;
+
+	private Transform waypoint;
+
+	public Node MyNode { get; set; }
 
 	void Awake()
 	{
-		arena = GameCache.Arena;
-		threats = GameCache.Threats;
+		arena = GAME.Arena;
+		threats = GAME.Threats;
+		navigate = GetComponent<NavToWaypoint>();
+	}
+
+	void Start()
+	{
+		StartCoroutine(DecisionTree());
+	}
+
+	IEnumerator DecisionTree ()
+	{
+		yield return new WaitForSeconds(GAME.BeatDuration * 0.5f);
+		do
+		{
+
+			yield return new WaitForSeconds(GAME.BeatDuration);
+		} while ( true );
+	}
+
+	bool ClaimNode (Node node)
+	{
+		if (node.Claim(gameObject))
+		{
+			MyNode = node;
+			return true;
+		} else
+			return false;
 	}
 
 	#region Debug Code
-
-	void Start ()
-	{
-		StartCoroutine(SetRandomWaypoint());
-	}
+	//void Start ()
+	//{
+	//	StartCoroutine(SetRandomWaypoint());
+	//}
 
 	IEnumerator SetRandomWaypoint ()
 	{
@@ -25,14 +56,20 @@ public class EnemyAI : MonoBehaviour {
 		while ( true )
 		{
 			yield return new WaitForSeconds(secsToWait);
-			Wedge randomWedge = arena.Wedges[Random.Range(0, arena.Wedges.Length)];
-			Node randomNode = randomWedge.Nodes[Random.Range(0, randomWedge.Nodes.Count)];
+			Node randomNode = arena.GetRandomNode();
+			waypoint = randomNode.transform;
 			secsToWait = (float) (randomNode.Tier + 1) * 2;
-			GetComponent<NavToWaypoint>().SetWaypoint(randomNode.transform);
+			GetComponent<NavToWaypoint>().Waypoint = waypoint;
 		}
 	}
 
-
-
+	void OnDrawGizmos ()
+	{
+		if ( threats.isShowingDestination && waypoint != null )
+		{
+			Gizmos.color = Color.green;
+			Gizmos.DrawSphere(waypoint.position, 0.3f);
+		}
+	}
 	#endregion
 }

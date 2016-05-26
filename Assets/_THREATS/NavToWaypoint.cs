@@ -13,7 +13,7 @@ public class NavToWaypoint : MonoBehaviour
 
 	void Awake ()
 	{
-		arena = GameCache.Arena;
+		arena = GAME.Arena;
 		agent = GetComponent<NavMeshAgent>();
 	}
 
@@ -29,19 +29,14 @@ public class NavToWaypoint : MonoBehaviour
 		}
 	}
 
-	public void SetWaypoint(Transform target)
+	public Transform Waypoint
 	{
-		waypoint = target;
+		get { return waypoint; }
+		set { waypoint = value; }
 	}
 
-	#region Debug Code
-	void OnDrawGizmos ()
+	public bool IsOnWaypoint
 	{
-		if ( waypoint != null )
-		{
-			Gizmos.color = Color.green;
-			Gizmos.DrawSphere(waypoint.position, 0.3f);
-		}
+		get { return waypoint != null && Vector3.Distance(transform.position, waypoint.position) < 0.1f; }
 	}
-	#endregion
 }
