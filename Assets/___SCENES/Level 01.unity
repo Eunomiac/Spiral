@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navNodePrefab: {fileID: 11445228, guid: 6ff3aa4b8511fd44198ff9c766b3e716, type: 2}
-  showNodes: 1
-  showConnections: 1
+  showNodes: 0
+  showConnections: 0
   showLabels: 0
   lineMaterial: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &356641635
@@ -231,18 +231,6 @@ Prefab:
     - target: {fileID: 481442, guid: 8c846d1bd97f5de43b9b6e7592f4fea9, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444130, guid: 8c846d1bd97f5de43b9b6e7592f4fea9, type: 2}
-      propertyPath: radiusOfTier.Array.data[0]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444130, guid: 8c846d1bd97f5de43b9b6e7592f4fea9, type: 2}
-      propertyPath: radiusOfTier.Array.data[1]
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444130, guid: 8c846d1bd97f5de43b9b6e7592f4fea9, type: 2}
-      propertyPath: radiusOfTier.Array.data[2]
-      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c846d1bd97f5de43b9b6e7592f4fea9, type: 2}
@@ -484,7 +472,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459996, guid: cca9ef02249c41b4986b925ea312a30b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 459996, guid: cca9ef02249c41b4986b925ea312a30b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -673,6 +661,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2358220, guid: d0841765d7bd4d440a2e0c82301d6297, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd582af18ec9d584a889da00a9e8cd4d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0841765d7bd4d440a2e0c82301d6297, type: 2}
   m_IsPrefabParent: 0

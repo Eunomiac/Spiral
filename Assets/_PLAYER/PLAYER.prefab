@@ -43,9 +43,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodesPerTier: 080000001000000020000000
   radiusOfTier:
-  - 3
-  - 6
-  - 9
+  - 4
+  - 8
+  - 12
   maxNeighbourDistMult: 1.5
 --- !u!208 &20884834
 NavMeshObstacle:

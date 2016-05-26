@@ -19,10 +19,10 @@ public class EnemyAI : MonoBehaviour {
 		navigate = GetComponent<NavToWaypoint>();
 	}
 
-	void Start()
-	{
-		StartCoroutine(DecisionTree());
-	}
+	//void Start()
+	//{
+	//	StartCoroutine(DecisionTree());
+	//}
 
 	IEnumerator DecisionTree ()
 	{
@@ -45,10 +45,10 @@ public class EnemyAI : MonoBehaviour {
 	}
 
 	#region Debug Code
-	//void Start ()
-	//{
-	//	StartCoroutine(SetRandomWaypoint());
-	//}
+	void Start ()
+	{
+		StartCoroutine(SetRandomWaypoint());
+	}
 
 	IEnumerator SetRandomWaypoint ()
 	{
@@ -63,13 +63,13 @@ public class EnemyAI : MonoBehaviour {
 		}
 	}
 
-	void OnDrawGizmos ()
-	{
-		if ( threats.isShowingDestination && waypoint != null )
-		{
-			Gizmos.color = Color.green;
-			Gizmos.DrawSphere(waypoint.position, 0.3f);
-		}
-	}
+	//void OnDrawGizmos ()
+	//{
+	//	if ( threats.isShowingDestination && waypoint != null )
+	//	{
+	//		Gizmos.color = Color.green;
+	//		Gizmos.DrawSphere(waypoint.position, 0.3f);
+	//	}
+	//}
 	#endregion
 }
