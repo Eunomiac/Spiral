@@ -2,14 +2,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RAIN.Navigation;
+using RAIN.Navigation.Waypoints;
 
 public class ARENA : MonoBehaviour
 {
 	public Node navNodePrefab;
+	public WaypointRig waypointRigPrefab;
 	public bool showNodes = false;
 	public bool showConnections = false;
 	public bool showLabels = false;
-	public Material lineMaterial;											// Debug
+	public Material lineMaterial;                                           // Debug
 
 	private List<NavNetwork> navNetworks = new List<NavNetwork>();
 	private PLAYER player;
@@ -20,10 +23,10 @@ public class ARENA : MonoBehaviour
 	
 	void Awake ()
 	{
-		player = GAME.Player; 
+		player = GAME.Player;
 	}
 
-	public NavNetwork InitializeNavNetwork(GameObject networkCore, int[] nodesPerTier, float[] distOfTier, float maxNeighbourDistMult)
+	public NavNetwork InitializeNavNetwork (GameObject networkCore, int[] nodesPerTier, float[] distOfTier, float maxNeighbourDistMult)
 	{
 		NavNetwork thisNetwork = new GameObject(networkCore.name + "_NavNet", typeof(NavNetwork)).GetComponent<NavNetwork>();
 		NavNetworks.Add(thisNetwork);

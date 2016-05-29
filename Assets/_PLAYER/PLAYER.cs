@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using RAIN.Navigation;
+using RAIN.Navigation.Waypoints;
 
 public class PLAYER : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class PLAYER : MonoBehaviour
 	private ARENA arena;
 	private Vector3 lastPosition;
 	private NavNetwork navNetwork;
+	//private WaypointSet navNetwork;
 
 
 	void Awake ()
@@ -30,4 +34,27 @@ public class PLAYER : MonoBehaviour
 			lastPosition = transform.position;
 		}
 	}
+
+	public void FirstTap (int axis, Vector3? startDirLS)
+	{
+
+	}
+
+	public void MultiTap (int axis, int taps)
+	{
+
+	}
+
+	public void StartHold (int axis, int taps)
+	{
+
+	}
+
+	public void EndHold ()
+	{
+
+	}
+
+
+
 }

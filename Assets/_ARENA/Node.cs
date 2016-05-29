@@ -14,6 +14,7 @@ public Text nodeLabel;
 	public float Angle { get; set; }
 	public int Tier { get; set; }
 	public int Index { get; set; }
+	public int WaypointIndex { get; set; }
 	public float RandomOffset { get; set; }
 	public GameObject Occupant { get; set; }
 
@@ -54,7 +55,7 @@ public Text nodeLabel;
 		}
 		foreach (Node neighbour in Neighbours)
 		{
-			Color color = colorsByTier[Random.Range(0, 8)];
+			Color color = colorsByTier.Random();
 			LineRenderer thisLine = new GameObject("Line T" + Tier + Index + " >> T" + neighbour.Tier + neighbour.Index, typeof(LineRenderer)).GetComponent<LineRenderer>();
 			thisLine.SetColors(color, color);
 			Vector3[] targetVertices = new Vector3[2];
@@ -69,8 +70,7 @@ public Text nodeLabel;
 
 	public void SetNodeLabel()
 	{
-		if (!label) 
-			label = Instantiate(nodeLabel);
+		label = label ?? Instantiate(nodeLabel);
 		label.rectTransform.SetParent(arena.GetComponentInChildren<Canvas>().transform, false);
 		label.rectTransform.anchoredPosition = new Vector2(transform.position.x, transform.position.z);
 		label.text = Index.ToString() + "\n" + Mathf.RoundToInt(Angle).ToString();

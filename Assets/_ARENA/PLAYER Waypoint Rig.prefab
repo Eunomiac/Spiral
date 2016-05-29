@@ -1,0 +1,349 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &161204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 401810}
+  - 114: {fileID: 11430122}
+  m_Layer: 0
+  m_Name: PLAYER Waypoint Rig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &401810
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11430122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2099906888, guid: 9fa2ecd1ff2ad394281dd3bf72c5b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataSerializer:
+    _serializedData: <component version="1.3" type="RAIN.Navigation.Waypoints.WaypointRig"><fields><field
+      value="OnWhenSelected" type="RAIN.Core.VisualModeEnum" id="_visualMode" /><field
+      type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /></fields><references><reference type="RAIN.Navigation.Waypoints.WaypointSet"
+      refcount="57" id="0"><field type="UnityEngine.Transform" id="_mountPoint" gameobject="0"
+      /><field value="Waypoint Rig(Clone)" type="System.String" id="_setName" /><field
+      value="Route" type="RAIN.Navigation.Waypoints.WaypointSet+WaypointSetType" id="_setType"
+      /><field value="0,0.6,0.6,1" type="UnityEngine.Color" id="_networkColor" /><field
+      value="-0.5" type="System.Single" id="_outlineColorOffset" /><field value="0.4"
+      type="System.Single" id="_selectionColorOffset" /><field type="System.Collections.Generic.List"
+      id="_waypoints" elementtype="RAIN.Navigation.Waypoints.Waypoint"><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="1" id="element0" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="2" id="element1" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="3" id="element2" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="4" id="element3" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="5" id="element4" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="6" id="element5" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="7" id="element6" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="8" id="element7" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="9" id="element8" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="10" id="element9" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="11" id="element10" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="12" id="element11" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="13" id="element12" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="14" id="element13" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="15" id="element14" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="16" id="element15" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="17" id="element16" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="18" id="element17" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="19" id="element18" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="20" id="element19" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="21" id="element20" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="22" id="element21" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="23" id="element22" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="24" id="element23" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="25" id="element24" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="26" id="element25" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="27" id="element26" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="28" id="element27" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="29" id="element28" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="30" id="element29" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="31" id="element30" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="32" id="element31" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="33" id="element32" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="34" id="element33" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="35" id="element34" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="36" id="element35" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="37" id="element36" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="38" id="element37" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="39" id="element38" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="40" id="element39" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="41" id="element40" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="42" id="element41" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="43" id="element42" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="44" id="element43" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="45" id="element44" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="46" id="element45" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="47" id="element46" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="48" id="element47" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="49" id="element48" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="50" id="element49" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="51" id="element50" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="52" id="element51" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="53" id="element52" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="54" id="element53" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="55" id="element54" /><field type="RAIN.Navigation.Waypoints.Waypoint"
+      reference="56" id="element55" /></field><field type="System.Collections.Generic.List"
+      id="_connections" elementtype="RAIN.Navigation.Waypoints.WaypointSet+WaypointConnection"
+      /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint" refcount="2"
+      id="1"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0" id="_waypointSet"
+      /><field value="T0 Node 0 (WP)" type="System.String" id="_waypointName" /><field
+      value="0,0,4.163982" type="UnityEngine.Vector3" id="_position" /><field value="0.5"
+      type="System.Single" id="_range" /></reference><reference type="RAIN.Navigation.Waypoints.Waypoint"
+      refcount="1" id="2"><field type="RAIN.Navigation.Waypoints.WaypointSet" reference="0"
+      id="_waypointSet" /><field value="T0 Node 1 (WP)" type="System.String" id="_waypointName"
+      /><field value="2.938589,0,2.938589" type="UnityEngine.Vector3" id="_position"
+      /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="3"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T0 Node 2 (WP)" type="System.String"
+      id="_waypointName" /><field value="3.785918,0,2.256583E-07" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="4"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T0 Node 3 (WP)" type="System.String"
+      id="_waypointName" /><field value="2.731592,0,-2.731592" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="5"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T0 Node 4 (WP)" type="System.String"
+      id="_waypointName" /><field value="-3.619473E-07,0,-4.140194" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="6"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T0 Node 5 (WP)" type="System.String"
+      id="_waypointName" /><field value="-2.898644,0,-2.898645" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="7"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T0 Node 6 (WP)" type="System.String"
+      id="_waypointName" /><field value="-3.699244,0,2.204921E-07" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="8"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T0 Node 7 (WP)" type="System.String"
+      id="_waypointName" /><field value="-2.656157,0,2.656156" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="9"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 0 (WP)" type="System.String"
+      id="_waypointName" /><field value="1.618049,0,8.134482" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="10"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 1 (WP)" type="System.String"
+      id="_waypointName" /><field value="4.301153,0,6.437131" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="11"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 2 (WP)" type="System.String"
+      id="_waypointName" /><field value="6.529196,0,4.362669" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="12"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 3 (WP)" type="System.String"
+      id="_waypointName" /><field value="8.45728,0,1.682258" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="13"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 4 (WP)" type="System.String"
+      id="_waypointName" /><field value="8.460938,0,-1.682985" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="14"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 5 (WP)" type="System.String"
+      id="_waypointName" /><field value="6.803569,0,-4.545999" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="15"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 6 (WP)" type="System.String"
+      id="_waypointName" /><field value="4.288586,0,-6.418323" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="16"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 7 (WP)" type="System.String"
+      id="_waypointName" /><field value="1.605513,0,-8.071458" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="17"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 8 (WP)" type="System.String"
+      id="_waypointName" /><field value="-1.639041,0,-8.240017" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="18"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 9 (WP)" type="System.String"
+      id="_waypointName" /><field value="-4.569412,0,-6.838606" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="19"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 10 (WP)" type="System.String"
+      id="_waypointName" /><field value="-7.072833,0,-4.725918" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="20"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 11 (WP)" type="System.String"
+      id="_waypointName" /><field value="-8.150366,0,-1.621209" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="21"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 12 (WP)" type="System.String"
+      id="_waypointName" /><field value="-7.667782,0,1.525217" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="22"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 13 (WP)" type="System.String"
+      id="_waypointName" /><field value="-6.646039,0,4.440739" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="23"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 14 (WP)" type="System.String"
+      id="_waypointName" /><field value="-4.69584,0,7.02782" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="24"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T1 Node 15 (WP)" type="System.String"
+      id="_waypointName" /><field value="-1.612865,0,8.108425" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="25"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 0 (WP)" type="System.String"
+      id="_waypointName" /><field value="0,0,11.83975" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="26"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 1 (WP)" type="System.String"
+      id="_waypointName" /><field value="2.345682,0,11.79254" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="27"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 2 (WP)" type="System.String"
+      id="_waypointName" /><field value="4.512901,0,10.89511" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="28"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 3 (WP)" type="System.String"
+      id="_waypointName" /><field value="6.973239,0,10.43619" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="29"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 4 (WP)" type="System.String"
+      id="_waypointName" /><field value="8.527833,0,8.527832" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="30"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 5 (WP)" type="System.String"
+      id="_waypointName" /><field value="9.861565,0,6.589287" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="31"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 6 (WP)" type="System.String"
+      id="_waypointName" /><field value="11.89475,0,4.926967" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="32"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 7 (WP)" type="System.String"
+      id="_waypointName" /><field value="12.86763,0,2.559531" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="33"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 8 (WP)" type="System.String"
+      id="_waypointName" /><field value="12.19236,0,7.267212E-07" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="34"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 9 (WP)" type="System.String"
+      id="_waypointName" /><field value="11.39271,0,-2.266151" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="35"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 10 (WP)" type="System.String"
+      id="_waypointName" /><field value="10.91415,0,-4.520787" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="36"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 11 (WP)" type="System.String"
+      id="_waypointName" /><field value="9.989284,0,-6.674623" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="37"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 12 (WP)" type="System.String"
+      id="_waypointName" /><field value="8.244461,0,-8.244461" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="38"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 13 (WP)" type="System.String"
+      id="_waypointName" /><field value="7.097868,0,-10.62271" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="39"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 14 (WP)" type="System.String"
+      id="_waypointName" /><field value="4.718081,0,-11.39045" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="40"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 15 (WP)" type="System.String"
+      id="_waypointName" /><field value="2.394625,0,-12.03859" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="41"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 16 (WP)" type="System.String"
+      id="_waypointName" /><field value="-1.051752E-06,0,-12.03064" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="42"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 17 (WP)" type="System.String"
+      id="_waypointName" /><field value="-2.562584,0,-12.88298" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="43"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 18 (WP)" type="System.String"
+      id="_waypointName" /><field value="-4.474315,0,-10.80195" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="44"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 19 (WP)" type="System.String"
+      id="_waypointName" /><field value="-6.871472,0,-10.28388" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="45"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 20 (WP)" type="System.String"
+      id="_waypointName" /><field value="-8.275304,0,-8.275306" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="46"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 21 (WP)" type="System.String"
+      id="_waypointName" /><field value="-9.634003,0,-6.437238" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="47"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 22 (WP)" type="System.String"
+      id="_waypointName" /><field value="-10.80029,0,-4.473627" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="48"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 23 (WP)" type="System.String"
+      id="_waypointName" /><field value="-11.35953,0,-2.259552" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="49"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 24 (WP)" type="System.String"
+      id="_waypointName" /><field value="-12.06384,0,7.190612E-07" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="50"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 25 (WP)" type="System.String"
+      id="_waypointName" /><field value="-11.52257,0,2.291983" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="51"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 26 (WP)" type="System.String"
+      id="_waypointName" /><field value="-11.1396,0,4.614176" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="52"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 27 (WP)" type="System.String"
+      id="_waypointName" /><field value="-10.33257,0,6.903996" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="53"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 28 (WP)" type="System.String"
+      id="_waypointName" /><field value="-7.701182,0,7.701182" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="54"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 29 (WP)" type="System.String"
+      id="_waypointName" /><field value="-6.475039,0,9.690578" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="55"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 30 (WP)" type="System.String"
+      id="_waypointName" /><field value="-4.947362,0,11.94399" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference><reference
+      type="RAIN.Navigation.Waypoints.Waypoint" refcount="1" id="56"><field type="RAIN.Navigation.Waypoints.WaypointSet"
+      reference="0" id="_waypointSet" /><field value="T2 Node 31 (WP)" type="System.String"
+      id="_waypointName" /><field value="-2.183886,0,12.38397" type="UnityEngine.Vector3"
+      id="_position" /><field value="0.5" type="System.Single" id="_range" /></reference></references></component>
+    _serializedGameObjects:
+    - {fileID: 401810}
+    _serializedCustomData: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 161204}
+  m_IsPrefabParent: 1

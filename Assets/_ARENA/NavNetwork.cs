@@ -2,18 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using RAIN.Navigation;
+using RAIN.Navigation.Waypoints;
 
 public class NavNetwork : MonoBehaviour {
 
 	private GameObject navCore;
 	private Wedge[] navWedges;
 	private Node[][] navNodes;
+	private WaypointRig waypointRig;
 
 	private ARENA arena;
 
 	public GameObject Core { get { return navCore; } }
 	public Wedge[] Wedges { get { return navWedges; } }
 	public Node[][] Nodes { get { return navNodes; } }
+	public WaypointRig WaypointRig { get { return waypointRig; } set { waypointRig = value; } }
 
 	void Awake ()
 	{
@@ -26,6 +30,7 @@ public class NavNetwork : MonoBehaviour {
 		InitializeNavNodes(nodesPerTier);
 		BuildNavNodes(center, nodesPerTier, distOfTier);
 		FindAllNeighbours(Nodes, nodesPerTier, distOfTier, maxNeighbourDistMult);
+		BuildWaypointRig(center, nodesPerTier);
 	}
 
 	#region Nav Node Creation & Neighbour Finding
@@ -158,6 +163,40 @@ public class NavNetwork : MonoBehaviour {
 		return true;
 	}
 
+	void BuildWaypointRig(GameObject center, int[] nodesPerTier)
+	{
+		WaypointRig = Instantiate(arena.waypointRigPrefab, Vector3.zero, Quaternion.identity) as WaypointRig;
+		WaypointRig.transform.SetParent(arena.transform);
+		WaypointRig.name = center.name + " Waypoint Rig";
+		WaypointSet theseWaypoints = WaypointRig.WaypointSet;
+		for (int i = 0; i < Nodes.Length; i++)
+		{
+			Node[] thisTier = Nodes[i];
+			for ( int j = 0; j < thisTier.Length; j++ )
+			{
+				Node thisNode = thisTier[j];
+				Waypoint thisWaypoint = new Waypoint();
+				thisWaypoint.Position = thisNode.transform.position;
+				thisWaypoint.WaypointName = thisNode.name + " (WP)";
+				theseWaypoints.AddWaypoint(thisWaypoint);
+				thisNode.WaypointIndex = theseWaypoints.IndexOfWaypoint(thisWaypoint);
+			}
+		}
+		for ( int i = 0; i < Nodes.Length; i++ )
+		{
+			Node[] thisTier = Nodes[i];
+			for ( int j = 0; j < thisTier.Length; j++ )
+			{
+				Node thisNode = thisTier[j];
+				foreach ( Node neighbour in thisNode.Neighbours )
+				{
+					int neighbourIndex = neighbour.WaypointIndex;
+					theseWaypoints.AddConnection(thisNode.WaypointIndex, neighbourIndex, true);
+				}
+			}
+		}
+	}
+
 #endregion
 
 	public Wedge GetWedgeByAngle (float angle)
@@ -203,7 +242,7 @@ public class NavNetwork : MonoBehaviour {
 	public Wedge GetRandomWedge (float minAngle = 0f, float maxAngle = 360f)
 	{
 		List<Wedge> theseWedges = GetWedgesBetweenAngles(minAngle, maxAngle);
-		return theseWedges[Random.Range(0, theseWedges.Count)];
+		return theseWedges.Random();
 	}
 
 	public List<Node> GetNodes (float minAngle = 0f, float maxAngle = 360f, int? tier = null)
@@ -224,6 +263,6 @@ public class NavNetwork : MonoBehaviour {
 	public Node GetRandomNode (float minAngle = 0f, float maxAngle = 360f, int? tier = null)
 	{
 		List<Node> theseNodes = GetNodes(minAngle, maxAngle, tier);
-		return theseNodes[Random.Range(0, theseNodes.Count)];
+		return theseNodes.Random();
 	}
 }
