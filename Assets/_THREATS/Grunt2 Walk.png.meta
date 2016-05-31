@@ -1,21 +1,21 @@
 fileFormatVersion: 2
-guid: 85f780fc3058be444bcb13ec0aa7cb73
-timeCreated: 1464106903
+guid: 3d4ae399db0448b449ab838dbbec8e1f
+timeCreated: 1464679311
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Grunt 1C_Male_high-res_Walk_0
-    21300002: Grunt 1C_Male_high-res_Walk_1
-    21300004: Grunt 1C_Male_high-res_Walk_2
-    21300006: Grunt 1C_Male_high-res_Walk_3
-    21300008: Grunt 1C_Male_high-res_Walk_4
-    21300010: Grunt 1C_Male_high-res_Walk_5
-    21300012: Grunt 1C_Male_high-res_Walk_6
-    21300014: Grunt 1C_Male_high-res_Walk_7
-    21300016: Grunt 1C_Male_high-res_Walk_8
-    21300018: Grunt 1C_Male_high-res_Walk_9
-    21300020: Grunt 1C_Male_high-res_Walk_10
-    21300022: Grunt 1C_Male_high-res_Walk_11
+    21300000: Grunt2 Walk_0
+    21300002: Grunt2 Walk_1
+    21300004: Grunt2 Walk_2
+    21300006: Grunt2 Walk_3
+    21300008: Grunt2 Walk_4
+    21300010: Grunt2 Walk_5
+    21300012: Grunt2 Walk_6
+    21300014: Grunt2 Walk_7
+    21300016: Grunt2 Walk_8
+    21300018: Grunt2 Walk_9
+    21300020: Grunt2 Walk_10
+    21300022: Grunt2 Walk_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,7 +62,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Grunt 1C_Male_high-res_Walk_0
+    - name: Grunt2 Walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -73,185 +73,188 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -18, y: 57}
-        - {x: -33, y: 46}
-        - {x: -33, y: -55}
-        - {x: -32, y: -64}
-        - {x: 18, y: -64}
-        - {x: 30, y: -43}
-        - {x: 30, y: 43}
-        - {x: 27, y: 57}
-    - name: Grunt 1C_Male_high-res_Walk_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20, y: 61}
-        - {x: -34, y: 39}
-        - {x: -34, y: -36}
-        - {x: -18, y: -64}
-        - {x: 21, y: -64}
-        - {x: 34, y: -53}
-        - {x: 34, y: 51}
-        - {x: 32, y: 61}
-    - name: Grunt 1C_Male_high-res_Walk_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -23, y: 57}
-        - {x: -30, y: 53}
-        - {x: -30, y: -37}
-        - {x: -17, y: -64}
-        - {x: 27, y: -64}
-        - {x: 33, y: -58}
-        - {x: 33, y: 49}
-        - {x: 28, y: 57}
-    - name: Grunt 1C_Male_high-res_Walk_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 16, y: 51}
-        - {x: -22, y: 51}
-        - {x: -31, y: 48}
-        - {x: -31, y: -64}
-        - {x: 26, y: -64}
-        - {x: 26, y: -58}
-        - {x: 24, y: 9}
-        - {x: 21, y: 41}
-    - name: Grunt 1C_Male_high-res_Walk_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -25, y: 55}
-        - {x: -30, y: 46}
-        - {x: -30, y: -7}
-        - {x: -14, y: -64}
-        - {x: 21, y: -64}
-        - {x: 22, y: -60}
-        - {x: 22, y: 50}
-        - {x: 20, y: 55}
-    - name: Grunt 1C_Male_high-res_Walk_5
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -26, y: 51}
-        - {x: -31, y: 43}
-        - {x: -31, y: -64}
-        - {x: 26, y: -64}
-        - {x: 26, y: 48}
-        - {x: 18, y: 51}
-    - name: Grunt 1C_Male_high-res_Walk_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -14, y: 51}
-        - {x: -26, y: 30}
-        - {x: -26, y: -64}
-        - {x: 31, y: -64}
-        - {x: 31, y: 43}
-        - {x: 29, y: 51}
-    - name: Grunt 1C_Male_high-res_Walk_7
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -18, y: 55}
-        - {x: -22, y: 37}
-        - {x: -22, y: -23}
-        - {x: -16, y: -64}
-        - {x: 19, y: -64}
-        - {x: 30, y: -9}
-        - {x: 30, y: 55}
-    - name: Grunt 1C_Male_high-res_Walk_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13, y: 51}
-        - {x: -26, y: 33}
-        - {x: -26, y: -63}
-        - {x: -25, y: -64}
-        - {x: 2, y: -62}
-        - {x: 2, y: -46}
-        - {x: 3, y: -52}
-        - {x: 6, y: -64}
-        - {x: 31, y: -64}
-        - {x: 31, y: 37}
-        - {x: 25, y: 51}
-    - name: Grunt 1C_Male_high-res_Walk_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -23, y: 61}
-        - {x: -30, y: 47}
-        - {x: -30, y: -46}
-        - {x: -25, y: -64}
+      - - {x: -30, y: 64}
+        - {x: -34, y: 56}
+        - {x: -34, y: -31}
+        - {x: -27, y: -64}
         - {x: 16, y: -64}
-        - {x: 23, y: -63}
-        - {x: 35, y: -56}
-        - {x: 35, y: 41}
-        - {x: 30, y: 61}
-    - name: Grunt 1C_Male_high-res_Walk_10
+        - {x: 32, y: -50}
+        - {x: 32, y: 59}
+        - {x: 30, y: 64}
+    - name: Grunt2 Walk_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 64}
+        - {x: -34, y: 63}
+        - {x: -34, y: -39}
+        - {x: -28, y: -64}
+        - {x: 20, y: -64}
+        - {x: 34, y: -45}
+        - {x: 34, y: 49}
+        - {x: 27, y: 64}
+    - name: Grunt2 Walk_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 64}
+        - {x: -34, y: -42}
+        - {x: -20, y: -61}
+        - {x: -3, y: -64}
+        - {x: -2, y: -60}
+        - {x: -2, y: -54}
+        - {x: -2, y: -56}
+        - {x: -1, y: -64}
+        - {x: 20, y: -64}
+        - {x: 33, y: -47}
+        - {x: 33, y: 45}
+        - {x: 29, y: 64}
+    - name: Grunt2 Walk_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 64}
+        - {x: -36, y: 49}
+        - {x: -36, y: -31}
+        - {x: -32, y: -64}
+        - {x: 28, y: -64}
+        - {x: 30, y: -33}
+        - {x: 30, y: 49}
+        - {x: 24, y: 64}
+    - name: Grunt2 Walk_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30, y: 64}
+        - {x: -35, y: 53}
+        - {x: -35, y: 7}
+        - {x: -12, y: -64}
+        - {x: 21, y: -64}
+        - {x: 29, y: -6}
+        - {x: 29, y: 55}
+        - {x: 23, y: 64}
+    - name: Grunt2 Walk_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 64}
+        - {x: -36, y: 48}
+        - {x: -36, y: -64}
+        - {x: 30, y: -64}
+        - {x: 30, y: 56}
+        - {x: 24, y: 64}
+    - name: Grunt2 Walk_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35, y: -63}
+        - {x: 36, y: -61}
+        - {x: 36, y: 64}
+        - {x: -30, y: 64}
+        - {x: -30, y: -52}
+        - {x: -28, y: -64}
+        - {x: -2, y: -64}
+        - {x: -2, y: -60}
+        - {x: 7, y: -64}
+        - {x: 18, y: -64}
+    - name: Grunt2 Walk_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 64}
+        - {x: -29, y: -44}
+        - {x: -14, y: -64}
+        - {x: 10, y: -64}
+        - {x: 34, y: -35}
+        - {x: 35, y: -23}
+        - {x: 35, y: 64}
+    - name: Grunt2 Walk_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30, y: 64}
+        - {x: -30, y: -47}
+        - {x: -27, y: -64}
+        - {x: 32, y: -64}
+        - {x: 36, y: -11}
+        - {x: 36, y: 57}
+        - {x: 26, y: 64}
+    - name: Grunt2 Walk_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 64}
+        - {x: -32, y: 56}
+        - {x: -32, y: -35}
+        - {x: -21, y: -64}
+        - {x: 19, y: -64}
+        - {x: 35, y: -49}
+        - {x: 35, y: 37}
+        - {x: 26, y: 64}
+    - name: Grunt2 Walk_10
       rect:
         serializedVersion: 2
         x: 128
@@ -262,17 +265,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 24, y: 64}
-        - {x: -21, y: 64}
-        - {x: -28, y: 60}
-        - {x: -34, y: 11}
-        - {x: -34, y: -39}
-        - {x: -22, y: -64}
-        - {x: 20, y: -64}
-        - {x: 34, y: -36}
-        - {x: 34, y: 9}
-        - {x: 28, y: 63}
-    - name: Grunt 1C_Male_high-res_Walk_11
+      - - {x: 30, y: 64}
+        - {x: -25, y: 64}
+        - {x: -33, y: 49}
+        - {x: -34, y: 42}
+        - {x: -34, y: -52}
+        - {x: -20, y: -64}
+        - {x: 34, y: -64}
+        - {x: 34, y: 62}
+    - name: Grunt2 Walk_11
       rect:
         serializedVersion: 2
         x: 256
@@ -283,13 +284,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -12, y: 61}
-        - {x: -29, y: 56}
-        - {x: -35, y: 32}
-        - {x: -35, y: -38}
-        - {x: -21, y: -64}
-        - {x: 30, y: -64}
-        - {x: 30, y: 61}
+      - - {x: -18, y: 64}
+        - {x: -35, y: 52}
+        - {x: -35, y: -44}
+        - {x: -17, y: -64}
+        - {x: 20, y: -64}
+        - {x: 32, y: -11}
+        - {x: 32, y: 44}
+        - {x: 19, y: 64}
     outline: []
   spritePackingTag: 
   userData: 

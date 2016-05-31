@@ -28,18 +28,35 @@ public static class ExtMethods {
 		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
-	// PUSH operation, adding item to the end of a list and returning list.
-	public static List<T> Push<T> (this List<T> list, T item)
+	// [Overloaded] Returns the LAST value from a given array OR list.
+	public static T Last<T> (this T[] array)
 	{
-		list.Add(item);
-		return list;
+		return array[array.Length - 1];
 	}
 
-	// POP operation, removing item from the end of a list and returning item.
-	public static T Pop<T> (this List<T> list)
+	public static T Last<T> (this List<T> list)
 	{
-		T item = list[list.Count];
-		list.RemoveAt(list.Count);
+		return list[list.Count - 1];
+	}
+	
+	// PUSH operation, adding item to the end of a list.  Returns true if item is unique, but will still add duplicates unless noDuplicates set to false.
+	public static bool Push<T> (this List<T> list, T item, bool noDuplicates = true)
+	{
+		if ( list.Contains(item) )
+			return false;
+		else
+		{
+			list.Add(item);
+			return true;
+		}
+	}
+
+	// POP operation, removing item from the end of a list and returning item.  Set "isRandom" to true for random item.
+	public static T Pop<T> (this List<T> list, bool isRandom = false)
+	{
+		int index = isRandom ? UnityEngine.Random.Range(0, list.Count) : list.Count - 1;
+		T item = list[index];
+		list.RemoveAt(index);
 		return item;
 	}
 	#endregion

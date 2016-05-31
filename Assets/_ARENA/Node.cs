@@ -14,9 +14,10 @@ public Text nodeLabel;
 	public float Angle { get; set; }
 	public int Tier { get; set; }
 	public int Index { get; set; }
-	public int WaypointIndex { get; set; }
 	public float RandomOffset { get; set; }
-	public GameObject Occupant { get; set; }
+	public GameObject occupant;
+
+	public GameObject Occupant { get { return occupant; } set { occupant = value; } }
 
 	private ARENA arena;
 	private Text label;
@@ -28,7 +29,7 @@ public Text nodeLabel;
 
 	void Start ()
 	{
-		if ( arena.showNodes ) GetComponent<SpriteRenderer>().color = colorsByTier[Tier];			// Debug
+		//if ( arena.showNodes ) GetComponent<SpriteRenderer>().color = colorsByTier[Tier];			// Debug
 	}
 
 	public bool Claim(GameObject occupant)
@@ -39,6 +40,24 @@ public Text nodeLabel;
 			return true;
 		} else
 			return false;
+	}
+
+	public void Unclaim()
+	{
+		Occupant = null;
+	}
+
+	public List<Node> GetNeighbours (int minTier = 0, int? max = null, bool unoccupiedOnly = true)
+	{
+		int maxTier = max ?? GAME.Player.nodesPerTier.Length;
+		List<Node> theseNodes = new List<Node>();
+		foreach ( Node node in Neighbours )
+		{
+			//Debug.Log("... Neighbour " + node.name + ", Tier " + node.Tier + ", Occupant " + node.Occupant.ToString());
+			if ( node.Tier >= minTier && node.Tier <= maxTier && (!unoccupiedOnly || node.Occupant == null) )
+				theseNodes.Add(node);
+		}
+		return theseNodes;
 	}
 
 	#region Debug Code

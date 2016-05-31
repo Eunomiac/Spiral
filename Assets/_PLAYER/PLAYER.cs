@@ -11,11 +11,9 @@ public class PLAYER : MonoBehaviour
 	public float maxNeighbourDistMult = 1.5f;
 
 	private ARENA arena;
-	private Vector3 lastPosition;
-	private NavNetwork navNetwork;
-	//private WaypointSet navNetwork;
 
-
+	public NavNetwork NavNetwork { get; set; }
+	
 	void Awake ()
 	{
 		arena = GAME.Arena;
@@ -23,15 +21,15 @@ public class PLAYER : MonoBehaviour
 
 	void Start()
 	{
-		navNetwork = arena.InitializeNavNetwork(gameObject, nodesPerTier, radiusOfTier, maxNeighbourDistMult);
+		NavNetwork = arena.InitializeNavNetwork(gameObject, nodesPerTier, radiusOfTier, maxNeighbourDistMult);
 	}
 
 	void Update()
 	{
-		if (transform.position != lastPosition)
+		if (transform.hasChanged)
 		{
-			navNetwork.BuildNavNodes(gameObject, nodesPerTier, radiusOfTier);
-			lastPosition = transform.position;
+			NavNetwork.BuildNavNodes(gameObject, nodesPerTier, radiusOfTier);
+			transform.hasChanged = false;
 		}
 	}
 
@@ -55,6 +53,9 @@ public class PLAYER : MonoBehaviour
 
 	}
 
-
+	public void TakeHit (float strength)
+	{
+		Debug.Log("Took hit of " + strength + " strength!");
+	}
 
 }

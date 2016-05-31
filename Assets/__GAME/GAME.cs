@@ -12,7 +12,8 @@ using System.Linq;
 public class GAME : MonoBehaviour {
 
 	public static float beatDuration = 2f;      // The length of a single Beat in seconds.
-	public static int AllowedDownBeats = 2;		// The number of beats worth of inactivity before penalty.
+	public static int AllowedDownBeats = 2;     // The number of beats worth of inactivity before penalty.
+	public static int MaxSimultaneousAttacks = 3;
 	public static int maxTaps = 3;				// Maximum number of taps that will combine into a MultiTap.
 	public static float leeway = 0.4f;          // Max time between taps to combine them into a MultiTap.
 	public static bool isDebugging = true;

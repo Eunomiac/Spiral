@@ -1,18 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class THREATS : MonoBehaviour {
+public class THREATS : MonoBehaviour
+{
 
 	public bool isShowingDestination = false;
-	private ARENA arena;
+	private List<EnemyAI> registeredAttackers = new List<EnemyAI>();
 
-	// Use this for initialization
-	void Start () {
-		arena = GAME.Arena;
+	void Start ()
+	{
+		StartCoroutine(EnemyManagement());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	IEnumerator EnemyManagement ()
+	{
+		while ( true )
+		{
+			TriggerAttack();
+			yield return new WaitForSeconds(GAME.BeatDuration * 2);
+		}
+	}
+
+	public bool RegisterAttacker (EnemyAI enemy)
+	{
+		return registeredAttackers.Push(enemy);
+	}
+
+	void TriggerAttack ()
+	{
+		int attackerCount = 0;
+		while ( registeredAttackers.Count > 0 && attackerCount < GAME.MaxSimultaneousAttacks )
+		{
+			EnemyAI thisAttacker = registeredAttackers.Pop();
+			thisAttacker.Attack();
+			attackerCount++;
+		}
 	}
 }
