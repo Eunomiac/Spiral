@@ -36,40 +36,4 @@ public class ARENA : MonoBehaviour
 		Debug.LogError("No navigation network found for network core '" + networkCore.name + "'.");
 		return null;
 	}
-
-	// Though the ARENA class supports multiple nav networks attached to various GameObjects, 
-	// the most commonly used is the player's nav network.  These functions are shortcuts that
-	// allow calling the player's nav network directly from the ARENA game object.
-	#region Player Nav Network Lookup Functions
-
-	public Wedge GetWedgeByAngle (float angle)
-	{
-		return PlayerNavNetwork.GetWedgeFromAngle(angle);
-	}
-
-	public Wedge GetWedgeByPosition (Vector3 position)
-	{
-		return PlayerNavNetwork.GetWedgeFromPosition(position);
-	}
-
-	public List<Wedge> GetWedgesBetweenAngles (float minAngle = 0f, float maxAngle = 360f)
-	{
-		return PlayerNavNetwork.GetWedgesBetweenAngles(minAngle, maxAngle);
-	}
-
-	public Wedge GetRandomWedge (float minAngle = 0f, float maxAngle = 360f)
-	{
-		return PlayerNavNetwork.GetRandomWedge(minAngle, maxAngle);
-	}
-
-	public List<Node> GetNodes (float minAngle = 0f, float maxAngle = 360f, int? tier = null, bool unoccupiedOnly = false, Vector3? distanceSortVector = null)
-	{
-		return PlayerNavNetwork.GetNodes(minAngle, maxAngle, tier, unoccupiedOnly, distanceSortVector);
-	}
-
-	public Node GetRandomNode (float minAngle = 0f, float maxAngle = 360f, int? tier = null, bool unoccupiedOnly = false)
-	{
-		return PlayerNavNetwork.GetRandomNode(minAngle, maxAngle, tier, unoccupiedOnly);
-	}
-	#endregion
 }

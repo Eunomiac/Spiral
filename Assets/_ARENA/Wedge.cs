@@ -11,8 +11,4 @@ public class Wedge : MonoBehaviour {
 	public float MinAngle { get; set; }
 	public float MaxAngle { get; set; }
 
-	void Awake ()
-	{
-
-	}
 }

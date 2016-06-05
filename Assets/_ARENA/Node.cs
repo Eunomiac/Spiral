@@ -29,7 +29,7 @@ public Text nodeLabel;
 
 	void Start ()
 	{
-		//if ( arena.showNodes ) GetComponent<SpriteRenderer>().color = colorsByTier[Tier];			// Debug
+		if ( arena.showNodes ) GetComponent<SpriteRenderer>().color = colorsByTier[Tier];			// Debug
 	}
 
 	public bool Claim(GameObject occupant)

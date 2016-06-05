@@ -19,47 +19,76 @@ MonoBehaviour:
       repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
       parameters=&quot;&quot; namespace=&quot;&quot; name=&quot;Populate Constants,
       Initialize Variables&quot; debugbreak=&quot;False&quot; classname=&quot;PopulateConstants&quot;
-      /&gt;&lt;priority repeatuntil=&quot;&quot; refreshrate=&quot;40&quot; priority=&quot;&quot;
+      /&gt;&lt;priority repeatuntil=&quot;&quot; refreshrate=&quot;0.1&quot; priority=&quot;&quot;
       name=&quot;ARENA AI&quot; debugbreak=&quot;False&quot;&gt;&lt;selector usepriorities=&quot;False&quot;
-      startingpriority=&quot;1&quot; runningpriority=&quot;1&quot; repeatuntil=&quot;failure&quot;
+      startingpriority=&quot;10&quot; runningpriority=&quot;10&quot; repeatuntil=&quot;&quot;
       name=&quot;Navigate Arena&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Waiting to Attack?&quot;
       debugbreak=&quot;False&quot; constraint=&quot;IsWaitingToAttack == true&quot;
-      /&gt;&lt;timer waitforsec=&quot;BeatDuration&quot; returnvalue=&quot;failure&quot;
-      priority=&quot;&quot; name=&quot;Wait 1 Beat&quot; debugbreak=&quot;False&quot;
-      /&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;No
-      Destination?&quot; debugbreak=&quot;False&quot; constraint=&quot;Destination
-      == null &amp;amp;&amp;amp; !IsAttacking&quot;&gt;&lt;action repeatuntil=&quot;&quot;
+      /&gt;&lt;timer waitforsec=&quot;WaitTime&quot; returnvalue=&quot;failure&quot;
+      priority=&quot;&quot; name=&quot;Wait Timer&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;expression returnvalue=&quot;failure&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;Reset Wait Timer&quot; expression=&quot;WaitTime
+      = BeatDuration&quot; debugbreak=&quot;False&quot; /&gt;&lt;constraint repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;No Destination?&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;Destination == null &amp;amp;&amp;amp; !IsAttacking&quot;&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;Find Destination&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
       parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;&quot;
       name=&quot;Target Closest Unoccupied Node&quot; debugbreak=&quot;False&quot;
-      classname=&quot;GetClosestUnoccupiedNode&quot; /&gt;&lt;/constraint&gt;&lt;action
-      repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
-      parameters=&quot;&quot; namespace=&quot;&quot; name=&quot;Update Variables&quot;
-      debugbreak=&quot;False&quot; classname=&quot;UpdateVariables&quot; /&gt;&lt;constraint
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Not At Destination?&quot;
-      debugbreak=&quot;False&quot; constraint=&quot;DistFromNode &amp;gt;= 1&quot;&gt;&lt;selector
-      usepriorities=&quot;False&quot; repeatuntil=&quot;success&quot; name=&quot;Move
-      Until AT Destination OR Destination Cancelled&quot; debugbreak=&quot;False&quot;&gt;&lt;expression
+      classname=&quot;GetClosestUnoccupiedNode&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
+      priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;&quot;
+      name=&quot;OR Leave Arena&quot; debugbreak=&quot;False&quot; classname=&quot;WithdrawFromArena&quot;
+      /&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;action repeatuntil=&quot;&quot;
+      priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;&quot;
+      name=&quot;Update Variables&quot; debugbreak=&quot;False&quot; classname=&quot;UpdateVariables&quot;
+      /&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Not
+      At Destination?&quot; debugbreak=&quot;False&quot; constraint=&quot;DistFromDest
+      &amp;gt;= 1&quot;&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;success&quot;
+      name=&quot;Move Until AT Destination OR Destination Cancelled&quot; debugbreak=&quot;False&quot;&gt;&lt;expression
       returnvalue=&quot;evaluate&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
-      name=&quot;Destination Cancelled&quot; expression=&quot;MyNode == null&quot;
+      name=&quot;Destination Cancelled&quot; expression=&quot;Destination == null&quot;
       debugbreak=&quot;False&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;Move Until AT Destination&quot; movetarget=&quot;Destination&quot;
       movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
       closeenoughdistance=&quot;0.1&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Ready To Attack?&quot;
-      debugbreak=&quot;False&quot; constraint=&quot;CurrentTier == 0&quot;&gt;&lt;action
-      repeatuntil=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot;
-      namespace=&quot;&quot; name=&quot;Register With Threat Manager&quot; debugbreak=&quot;False&quot;
-      classname=&quot;RegisterAttack&quot; /&gt;&lt;/constraint&gt;&lt;action repeatuntil=&quot;&quot;
-      priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;&quot;
+      debugbreak=&quot;False&quot; constraint=&quot;MyNode != null &amp;amp;&amp;amp;
+      CurrentTier == 0&quot;&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;&quot;
+      parameters=&quot;&quot; namespace=&quot;&quot; name=&quot;Register With Threat
+      Manager&quot; debugbreak=&quot;False&quot; classname=&quot;RegisterAttack&quot;
+      /&gt;&lt;/constraint&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
+      parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;&quot;
       name=&quot;Try To Advance&quot; debugbreak=&quot;False&quot; classname=&quot;TryToAdvance&quot;
       /&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
       parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;Try To Spread&quot;
-      debugbreak=&quot;False&quot; classname=&quot;TryToSpread&quot; /&gt;&lt;/selector&gt;&lt;/priority&gt;&lt;sequencer
-      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
-      name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;Attacking?&quot; debugbreak=&quot;False&quot;
-      constraint=&quot;IsAttacking == true&quot; /&gt;&lt;/sequencer&gt;&lt;/sequencer&gt;&lt;/behaviortree&gt;"
+      debugbreak=&quot;False&quot; classname=&quot;TryToSpread&quot; /&gt;&lt;/selector&gt;&lt;sequencer
+      usepriorities=&quot;False&quot; startingpriority=&quot;AttackStartPriority&quot;
+      runningpriority=&quot;AttackRunPriority&quot; repeatuntil=&quot;&quot; name=&quot;Attack&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Remember FromNode&quot;
+      expression=&quot;FromNode = MyNode&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;IsAttacking = true&quot; expression=&quot;IsWaitingToAttack = false;
+      IsAttacking = true&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Destination To Player&quot;
+      expression=&quot;Destination = Player.transform.position&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;success&quot;
+      priority=&quot;&quot; name=&quot;Move Towards Player UNTIL Cancelled&quot; debugbreak=&quot;False&quot;&gt;&lt;expression
+      returnvalue=&quot;evaluate&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;Destination Cancelled&quot; expression=&quot;Destination == null&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;Move Until AT Destination&quot; movetarget=&quot;Destination&quot;
+      movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;0.1&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/selector&gt;&lt;action
+      repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
+      parameters=&quot;&quot; namespace=&quot;&quot; name=&quot;Withdraw&quot; debugbreak=&quot;False&quot;
+      classname=&quot;WithdrawFromArena&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Skip Wait&quot; expression=&quot;WaitTime
+      = 0&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Reset Priorities&quot;
+      expression=&quot;IsAttacking = false; AttackStartPriority = 0; AttackRunPriority
+      = 0&quot; debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;/priority&gt;&lt;/sequencer&gt;&lt;/behaviortree&gt;"
       type="System.String" id="treeData" /><field type="System.Array" id="treeBindings"
       elementtype="System.String" /></fields><references /></scriptableobject>
     _serializedGameObjects: []

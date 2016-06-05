@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class ExtMethods {
 
@@ -59,6 +60,7 @@ public static class ExtMethods {
 		list.RemoveAt(index);
 		return item;
 	}
+
 	#endregion
 
 	#region Angle Methods
@@ -90,9 +92,17 @@ public static class ExtMethods {
 
 	#region Vector3 Methods
 	// Returns TRUE if given vector equals parameter vector, with fuzziness parameter.
-	public static bool FuzzyEquals (this Vector2 vec1, Vector2 vec2, float fuzziness = 0.2f)
+	public static bool FuzzyEquals (this Vector3 vec1, Vector3 vec2, float fuzziness = 0.2f)
 	{
 		return (vec1 - vec2).sqrMagnitude < fuzziness;
+	}
+
+	// Returns 2D distance between two Vector3's, ignoring y-value.
+	public static float Distance2D (this Vector3 vec1, Vector3 vec2)
+	{
+		vec1 = new Vector3(vec1.x, 0f, vec1.z);
+		vec2 = new Vector3(vec2.x, 0f, vec2.z);
+		return Vector3.Distance(vec1, vec2);
 	}
 	#endregion
 

@@ -119,6 +119,8 @@ public class NavNetwork : MonoBehaviour {
 				if ( arena.showConnections ) { thisNode.DrawNeighbourLines(arena.lineMaterial); }			  //
 			}
 		}
+		foreach (Wedge wedge in Wedges)
+			wedge.Nodes.Sort((x, y) => x.Tier.CompareTo(y.Tier));	// Sort wedge node list by Tier (lower tiers at lower indices).
 	}
 
 	void ConnectAllNeighbours (Node[][] nodeList, int[] nodesPerTier, float[] distOfTier, float maxNeighbourDistMult)
@@ -162,7 +164,7 @@ public class NavNetwork : MonoBehaviour {
 	bool ConnectNeighbours (Node nodeA, Node nodeB, float? maxDist = null)
 	{
 		float maxDistance = maxDist ?? 0f;
-		if ( maxDistance > 0 && Vector3.Distance(nodeA.transform.position, nodeB.transform.position) > maxDistance )
+		if ( maxDistance > 0 && nodeA.transform.position.Distance2D(nodeB.transform.position) > maxDistance )
 			return false;
 		if ( !nodeA.Neighbours.Contains(nodeB) )
 			nodeA.Neighbours.Add(nodeB);
@@ -209,9 +211,10 @@ public class NavNetwork : MonoBehaviour {
 
 	public float GetAngleFromPosition (Vector3 position)
 	{
+		position -= CenterNode.transform.position;
 		float absX = position.x * (position.x < 0f ? -1 : 1);
 		float absZ = position.z * (position.z < 0f ? -1 : 1);
-		float angle = Mathf.Atan2(absZ, absX);
+		float angle = Mathf.Atan2(absZ, absX)*Mathf.Rad2Deg;
 
 		if ( position.x < 0f && position.z < 0f ) { angle = 270f - angle; }
 		else if ( position.x < 0f ) { angle = 270f + angle; }
@@ -225,10 +228,8 @@ public class NavNetwork : MonoBehaviour {
 	{
 		angle = angle + 0.1f;
 		for ( int i = 0; i < Wedges.Length; i++ )
-		{
 			if ( angle.IsBetween(Wedges[i].MinAngle, Wedges[i].MaxAngle) )
 				return Wedges[i];
-		}
 		Debug.LogError("No valid wedge found for angle " + angle);
 		return null;
 	}
@@ -258,31 +259,73 @@ public class NavNetwork : MonoBehaviour {
 		return theseWedges.Count == 0 ? null : theseWedges.Random();
 	}
 
-	public List<Node> GetNodes (float minAngle = 0f, float maxAngle = 360f, int? tier = null, bool unoccupiedOnly = false, Vector3? distSortVector = null)
+	public List<Node> GetNodes (float minAngle = 0f, float maxAngle = 360f, int? minTier = null, int? maxTier = null, bool unoccupiedOnly = false, Vector3? distSortVector = null)
 	{
-		List<Wedge> theseWedges = GetWedgesBetweenAngles(minAngle, maxAngle);
+		return GetNodesFromWedge(GetWedgesBetweenAngles(minAngle, maxAngle), minTier, maxTier, unoccupiedOnly, distSortVector);
+	}
+
+	public List<Node> GetNodesFromWedge (Wedge wedge, int? minTier = null, int? maxTier = null, bool unoccupiedOnly = false, Vector3? distSortVector = null)
+	{
+		List<Wedge> wedgeList = new List<Wedge>();
+		wedgeList.Add(wedge);
+		return GetNodesFromWedge(wedgeList, minTier, maxTier, unoccupiedOnly, distSortVector);
+	}
+
+	public List<Node> GetNodesFromWedge (List<Wedge> wedges, int? minTier = null, int? maxTier = null, bool unoccupiedOnly = false, Vector3? distSortVector = null)
+	{
 		List<Node> theseNodes = new List<Node>();
-		foreach ( Wedge wedge in theseWedges )
+		minTier = minTier == null ? minTier : Mathf.Clamp((int) minTier, 0, GAME.Player.nodesPerTier.Length);
+		maxTier = maxTier == null ? maxTier : Mathf.Clamp((int) maxTier, 0, GAME.Player.nodesPerTier.Length);
+		foreach ( Wedge wedge in wedges )
 			foreach ( Node node in wedge.Nodes )
-				if ( (!unoccupiedOnly || node.Occupant == null) && (tier == null || tier == node.Tier) )
+				if ( (!unoccupiedOnly || node.Occupant == null) && (minTier == null || node.Tier >= minTier) && (maxTier == null || node.Tier <= maxTier) )
 					theseNodes.Add(node);
 		if ( distSortVector != null && theseNodes.Count > 1 )
 		{
 			Vector3 distVec = (Vector3) distSortVector;
-			theseNodes.Sort((x, y) => Vector3.Distance(x.transform.position, distVec).CompareTo(Vector3.Distance(y.transform.position, distVec)));
+			theseNodes.Sort((x, y) => x.transform.position.Distance2D(distVec).CompareTo(y.transform.position.Distance2D(distVec)));
 		}
 		return theseNodes;
 	}
 
-	public Node GetClosestNode (Vector3 distVec, float minAngle = 0f, float maxAngle = 360f, int? tier = null, bool unoccupiedOnly = true)
+	public Node GetClosestNode (Vector3 distVec, float minAngle = 0f, float maxAngle = 360f, int? minTier = null, int? maxTier = null, bool unoccupiedOnly = true)
 	{
-		List<Node> nodes = GetNodes(minAngle, maxAngle, tier, unoccupiedOnly, distVec);
+		List<Node> nodes = GetNodes(minAngle, maxAngle, minTier, maxTier, unoccupiedOnly, distVec);
 		return nodes.Count == 0 ? null : nodes[0];
 	}
 
-	public Node GetRandomNode (float minAngle = 0f, float maxAngle = 360f, int? tier = null, bool unoccupiedOnly = true)
+	public Node GetClosestNode (Vector3 distVec, Wedge wedge, int? minTier = null, int? maxTier = null, bool unoccupiedOnly = true)
 	{
-		List<Node> nodes = GetNodes(minAngle, maxAngle, tier, unoccupiedOnly);
+		List<Node> nodes = GetNodesFromWedge(wedge, minTier, maxTier, unoccupiedOnly, distVec);
+		return nodes.Count == 0 ? null : nodes[0];
+	}
+
+	public Node GetClosestNode (Vector3 distVec, List<Wedge> wedges, int? minTier = null, int? maxTier = null, bool unoccupiedOnly = true)
+	{
+		List<Node> nodes = GetNodesFromWedge(wedges, minTier, maxTier, unoccupiedOnly, distVec);
+		return nodes.Count == 0 ? null : nodes[0];
+	}
+
+	public Node GetRandomNode (float minAngle = 0f, float maxAngle = 360f, int? minTier = null, int? maxTier = null, bool unoccupiedOnly = true)
+	{
+		List<Node> nodes = GetNodes(minAngle, maxAngle, minTier, maxTier, unoccupiedOnly);
 		return nodes.Count == 0 ? null : nodes.Random();
+	}
+
+	public int GetTierFromPosition (Vector3 position)
+	{
+		float distance = position.Distance2D(GAME.Player.transform.position);
+		if ( distance <= GAME.Player.radiusOfTier[0] )
+			return -1;
+		else if ( distance >= GAME.Player.radiusOfTier.Last() )
+			return GAME.Player.radiusOfTier.Length;
+		else
+		{
+			for ( int i = 0; i < GAME.Player.radiusOfTier.Length - 1; i++ )
+				if ( distance >= GAME.Player.radiusOfTier[i] && distance <= GAME.Player.radiusOfTier[i + 1] )
+					return i;
+		}
+		Debug.LogError("No valid tier found for distance " + distance.ToString());
+		return -2;
 	}
 }
