@@ -274,8 +274,8 @@ public class NavNetwork : MonoBehaviour {
 	public List<Node> GetNodesFromWedge (List<Wedge> wedges, int? minTier = null, int? maxTier = null, bool unoccupiedOnly = false, Vector3? distSortVector = null)
 	{
 		List<Node> theseNodes = new List<Node>();
-		minTier = minTier == null ? minTier : Mathf.Clamp((int) minTier, 0, GAME.Player.nodesPerTier.Length);
-		maxTier = maxTier == null ? maxTier : Mathf.Clamp((int) maxTier, 0, GAME.Player.nodesPerTier.Length);
+		minTier = minTier == null ? minTier : Mathf.Clamp((int) minTier, 0, GAME.Player.nodesPerTier.Length-1);
+		maxTier = maxTier == null ? maxTier : Mathf.Clamp((int) maxTier, 0, GAME.Player.nodesPerTier.Length-1);
 		foreach ( Wedge wedge in wedges )
 			foreach ( Node node in wedge.Nodes )
 				if ( (!unoccupiedOnly || node.Occupant == null) && (minTier == null || node.Tier >= minTier) && (maxTier == null || node.Tier <= maxTier) )

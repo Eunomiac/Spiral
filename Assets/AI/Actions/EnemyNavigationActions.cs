@@ -117,8 +117,10 @@ public class WithdrawFromArena : RAINAction
 	public override ActionResult Execute (RAIN.Core.AI ai)
 	{
 		Wedge myWedge = player.NavNetwork.GetWedgeFromPosition(ai.Body.transform.position);
-		Node distantNode = player.NavNetwork.GetNodesFromWedge(myWedge, Mathf.RoundToInt(Mathf.Infinity)).Random();
+		Node distantNode = player.NavNetwork.GetNodesFromWedge(myWedge, GAME.BIGINT).Random();
+		Debug.Log("Withdraw Node: " + distantNode.name + ", Distance: " + distantNode.transform.position.Distance2D(GAME.Player.transform.position));
 		Vector3 newDest = (distantNode.transform.position - GAME.Player.transform.position) * Random.Range(1.1f, 1.7f) + GAME.Player.transform.position;
+		Debug.Log("... New Dest: " + newDest.ToString() + ", Distance: " + newDest.Distance2D(GAME.Player.transform.position));
 		enemy.MyNode = null;
 		enemy.MyDestination = newDest;
 		return ActionResult.SUCCESS;

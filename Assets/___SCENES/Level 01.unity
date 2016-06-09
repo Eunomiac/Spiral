@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navNodePrefab: {fileID: 11445228, guid: 6ff3aa4b8511fd44198ff9c766b3e716, type: 2}
-  showNodes: 1
+  showNodes: 0
   showConnections: 0
   showLabels: 0
   lineMaterial: {fileID: 2100000, guid: c9391b810c1479b4aa6cfdb4baba91ac, type: 2}

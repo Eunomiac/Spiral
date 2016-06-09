@@ -49,14 +49,16 @@ MonoBehaviour:
       returnvalue=&quot;evaluate&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
       name=&quot;Destination Cancelled&quot; expression=&quot;Destination == null&quot;
       debugbreak=&quot;False&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;Move Until AT Destination&quot; movetarget=&quot;Destination&quot;
+      priority=&quot;&quot; name=&quot;Move&quot; movetarget=&quot;Destination&quot;
       movespeed=&quot;&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
-      closeenoughdistance=&quot;0.1&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Ready To Attack?&quot;
-      debugbreak=&quot;False&quot; constraint=&quot;MyNode != null &amp;amp;&amp;amp;
-      CurrentTier == 0&quot;&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;&quot;
-      parameters=&quot;&quot; namespace=&quot;&quot; name=&quot;Register With Threat
-      Manager&quot; debugbreak=&quot;False&quot; classname=&quot;RegisterAttack&quot;
+      closeenoughdistance=&quot;0.1&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;expression
+      returnvalue=&quot;failure&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;Clear Destination&quot; expression=&quot;Destination = null&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;Ready To Attack?&quot; debugbreak=&quot;False&quot; constraint=&quot;MyNode
+      != null &amp;amp;&amp;amp; CurrentTier == 0&quot;&gt;&lt;action repeatuntil=&quot;&quot;
+      parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;&quot;
+      name=&quot;Register With Threat Manager&quot; debugbreak=&quot;False&quot; classname=&quot;RegisterAttack&quot;
       /&gt;&lt;/constraint&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
       parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;&quot;
       name=&quot;Try To Advance&quot; debugbreak=&quot;False&quot; classname=&quot;TryToAdvance&quot;

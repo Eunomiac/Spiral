@@ -11,6 +11,8 @@ using System.Linq;
 
 public class GAME : MonoBehaviour {
 
+	public const int BIGINT = 1000000; 
+
 	public static float beatDuration = 2f;      // The length of a single Beat in seconds.
 	public static int AllowedDownBeats = 2;     // The number of beats worth of inactivity before penalty.
 	public static int MaxSimultaneousAttacks = 3;
