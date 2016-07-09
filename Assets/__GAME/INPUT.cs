@@ -16,7 +16,7 @@ public class INPUT : MonoBehaviour {
 	private bool[] isHeldDown = new bool[ButtonAxes.Length];
 	private Vector3? dirLS, dirRS, startDirLS, startDirRS;
 
-	private PLAYER player;
+	private PLAYER player = GAME.Player;
 
 	void Awake ()
 	{
@@ -37,7 +37,7 @@ public class INPUT : MonoBehaviour {
 		while ( true )
 		{
 			if ( Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 )
-				dirLS = new Vector3(Input.GetAxis("Horizontal"), -1 * Input.GetAxis("Vertical"), 0);
+				dirLS = new Vector3(Input.GetAxis("Horizontal"), 0, -1 * Input.GetAxis("Vertical"));
 			else
 				dirLS = null;
 			yield return null;
@@ -49,7 +49,7 @@ public class INPUT : MonoBehaviour {
 		while ( true )
 		{
 			if ( Input.GetAxis("RightStickHoriz") != 0 || Input.GetAxis("RightStickVert") != 0 )
-				dirRS = new Vector3(Input.GetAxis("RightStickHoriz"), -1 * Input.GetAxis("RightStickVert"), 0);
+				dirRS = new Vector3(Input.GetAxis("RightStickHoriz"), 0, -1 * Input.GetAxis("RightStickVert"));
 			else
 				dirRS = null;
 			yield return null;

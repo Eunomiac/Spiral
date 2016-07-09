@@ -33,16 +33,16 @@ public class EnemyAI : MonoBehaviour {
 
 	private AIRig aiRig;
 	private RAINMemory memory;
-	private BasicMind mind;
-	private BTPriorityNode mainPriorityNode;
-	private int attackNodeIndex;
+	//private BasicMind mind;
+	//private BTPriorityNode mainPriorityNode;
+	//private int attackNodeIndex;
 
 	private Node myNode;
 	private Vector3? myDest;
 	private bool isAttacking;
 
 
-	private PLAYER player;
+	private PLAYER player = GAME.Player;
 
 	public Node MyNode {
 		get { return myNode; }
@@ -96,26 +96,26 @@ public class EnemyAI : MonoBehaviour {
 
 	void Awake()
 	{
-		player = GAME.Player;
+		// player = GAME.Player;
 		aiRig = GetComponentInChildren<AIRig>();
 		memory = aiRig.AI.WorkingMemory;
-		mind = aiRig.AI.Mind as BasicMind;
+		//mind = aiRig.AI.Mind as BasicMind;
 		memory.SetItem("AttackStartPriority", 0);
 		memory.SetItem("AttackRunPriority", 0);
 	}
 
 	void Start ()
 	{
-		BTNode rootNode = mind.BehaviorRoot;
-		for ( int i = 0; i < rootNode.GetChildCount(); i++ )
-		{
-			if ( rootNode.GetChild(i).GetType() == typeof(BTPriorityNode) )
-			{
-				mainPriorityNode = rootNode.GetChild(i) as BTPriorityNode;
-				break;
-			}
-		}
-		attackNodeIndex = mainPriorityNode.GetChildIndex(ATTACKNODE);
+		//BTNode rootNode = mind.BehaviorRoot;
+		//for ( int i = 0; i < rootNode.GetChildCount(); i++ )
+		//{
+		//	if ( rootNode.GetChild(i).GetType() == typeof(BTPriorityNode) )
+		//	{
+		//		mainPriorityNode = rootNode.GetChild(i) as BTPriorityNode;
+		//		break;
+		//	}
+		//}
+		//attackNodeIndex = mainPriorityNode.GetChildIndex(ATTACKNODE);
 	}
 
 	public bool ClaimNode (Node node)

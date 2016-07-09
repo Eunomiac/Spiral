@@ -23,13 +23,19 @@ public class GAME : MonoBehaviour {
 
 	#region Object Caching
 	public static ARENA Arena { get; set; }
+	public static INPUT Input { get; set; }
+	public static MANTLE Mantle { get; set; }
 	public static PLAYER Player { get; set; }
+	public static SPELLS Spells { get; set; }
 	public static THREATS Threats { get; set; }
 
 	void Awake ()
 	{
 		Arena = FindObjectOfType<ARENA>();
+		Input = FindObjectOfType<INPUT>();
+		Mantle = FindObjectOfType<MANTLE>(); 
 		Player = FindObjectOfType<PLAYER>();
+		Spells = FindObjectOfType<SPELLS>();
 		Threats = FindObjectOfType<THREATS>();
 	}
 	#endregion

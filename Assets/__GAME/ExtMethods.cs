@@ -52,9 +52,11 @@ public static class ExtMethods {
 		}
 	}
 
-	// POP operation, removing item from the end of a list and returning item.  Set "isRandom" to true for random item.
+	// POP operation, removing item from the end of a list and returning item, or default value if list is empty.  Set "isRandom" to true for random item.
 	public static T Pop<T> (this List<T> list, bool isRandom = false)
 	{
+		if (list.Count == 0)
+			return default(T);
 		int index = isRandom ? UnityEngine.Random.Range(0, list.Count) : list.Count - 1;
 		T item = list[index];
 		list.RemoveAt(index);
