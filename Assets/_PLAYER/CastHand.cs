@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CastHand : MonoBehaviour
 {
@@ -7,6 +6,9 @@ public class CastHand : MonoBehaviour
 	private SpriteRenderer handSprite;
 
 	public GameObject Hand { get { return hand; } }
+	public GameObject PreCastFX { get; set; }
+	public int ButtonAxis { get; set; }
+	public Vector3? StartDir { get; set; }
 
 	void Awake ()
 	{
@@ -14,10 +16,10 @@ public class CastHand : MonoBehaviour
 		handSprite = hand.GetComponentInChildren<SpriteRenderer>();
 	}
 
-	public void FadeHand(bool isFadeOut)
+	public void FadeHand (bool isFadeOut)
 	{
 		Color thisColor = handSprite.color;
-		thisColor.a = isFadeOut ? 127f : 255f;
+		thisColor.a = isFadeOut ? 0.3f : 1f;
 		handSprite.color = thisColor;
 	}
 }

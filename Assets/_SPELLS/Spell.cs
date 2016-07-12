@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Spell : MonoBehaviour {
+public class Spell : MonoBehaviour
+{
 
 	public string spellName;
-	public float castDuration;
+	public float castDurationInBeats;
 	public bool isContinuous = false;
 	public GameObject startCastFXPrefab, spellEffectPrefab;
 	private GameObject startCastFX, spellEffect;
+	private CastHand castingHand;
 
 	private PLAYER player;
 	private SPELLS spells;
 
 
-	void Awake()
+	void Awake ()
 	{
 		player = GAME.Player;
 		spells = GAME.Spells;
@@ -21,20 +22,20 @@ public class Spell : MonoBehaviour {
 
 	void Start ()
 	{
+		castingHand = GetComponentInParent<CastHand>();
 		startCastFX = Instantiate(startCastFXPrefab);
-		//startCastFX = Instantiate(startCastFXPrefab, transform.position, Quaternion.identity) as GameObject;
 		startCastFX.transform.SetParent(transform, false);
-		Invoke("LaunchSpell", castDuration);
+		Invoke("LaunchSpell", castDurationInBeats * GAME.BeatDuration);
 	}
-	
+
 	void LaunchSpell ()
 	{
-		spells.StopCast();
 		spellEffect = Instantiate(spellEffectPrefab, startCastFX.transform.position, startCastFX.transform.rotation) as GameObject;
-		Destroy(startCastFX);
 		spellEffect.transform.SetParent(spells.transform, true);
 		if ( !isContinuous )
-			player.ReleaseHand(GetComponentInParent<CastHand>());
+			player.ReleaseHand(castingHand);
+		Destroy(castingHand.PreCastFX);
+		Destroy(startCastFX);
 		Destroy(gameObject);
 	}
 }
