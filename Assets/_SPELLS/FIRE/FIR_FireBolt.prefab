@@ -1,78 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &152354
+--- !u!1 &198408
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 429002}
-  - 114: {fileID: 11444348}
+  - 4: {fileID: 455970}
+  - 114: {fileID: 11427978}
   m_Layer: 0
-  m_Name: SPELLS - Fire
+  m_Name: FIR_FireBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &429002
+--- !u!4 &455970
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152354}
+  m_GameObject: {fileID: 198408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11444348
+--- !u!114 &11427978
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152354}
+  m_GameObject: {fileID: 198408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd5870c44b10bc4c95c81b53e4337c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4729d8c68a4ccf043bef8eaf27b13bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aTapSpells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bTapSpells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  xTapSpells:
-  - {fileID: 183976, guid: c6ffc9e35c289374da54b3ec51f0e435, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  yTapSpells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  aContSpells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bContSpells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  xContSpells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  yContSpells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isPreCasting: 0
+  numBolts: 5
+  searchAngle: 60
+  boltPrefab: {fileID: 175710, guid: d692ae1c6450d784984cc4c0c202e921, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -82,5 +52,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 152354}
+  m_RootGameObject: {fileID: 198408}
   m_IsPrefabParent: 1

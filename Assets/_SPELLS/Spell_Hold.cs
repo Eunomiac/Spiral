@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Spell : MonoBehaviour
+public class Spell_Hold : MonoBehaviour
 {
 
     public string spellName;

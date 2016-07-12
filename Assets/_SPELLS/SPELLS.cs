@@ -5,17 +5,16 @@ using UnityEngine;
 public class SPELLS : MonoBehaviour
 {
 
-    public Spell[] aTapSpells = new Spell[3];
-    public Spell[] bTapSpells = new Spell[3];
-    public Spell[] xTapSpells = new Spell[3];
-    public Spell[] yTapSpells = new Spell[3];
-    public Spell[] aContSpells = new Spell[3];
-    public Spell[] bContSpells = new Spell[3];
-    public Spell[] xContSpells = new Spell[3];
-    public Spell[] yContSpells = new Spell[3];
+    public GameObject[] aTapSpells = new GameObject[3];
+    public GameObject[] bTapSpells = new GameObject[3];
+    public GameObject[] xTapSpells = new GameObject[3];
+    public GameObject[] yTapSpells = new GameObject[3];
+    public GameObject[] aContSpells = new GameObject[3];
+    public GameObject[] bContSpells = new GameObject[3];
+    public GameObject[] xContSpells = new GameObject[3];
+    public GameObject[] yContSpells = new GameObject[3];
 
-    private List<Spell> tapSpells = new List<Spell>();
-    //private List<Spell> contSpells = new List<Spell>();
+    private List<GameObject> allSpells = new List<GameObject>();
     private GameObject preCastFXPrefab;
     private CastHand preCastHand;
 
@@ -29,8 +28,7 @@ public class SPELLS : MonoBehaviour
         mantle = GAME.Mantle;
         player = GAME.Player;
         preCastFXPrefab = mantle.preCastFXPrefab;
-        tapSpells = aTapSpells.Concat(bTapSpells).Concat(xTapSpells).Concat(yTapSpells).ToList();
-        //contSpells = aContSpells.Concat(bContSpells).Concat(xContSpells).Concat(yContSpells).ToList();
+        allSpells = aTapSpells.Concat(bTapSpells).Concat(xTapSpells).Concat(yTapSpells).Concat(aContSpells).Concat(bContSpells).Concat(xContSpells).Concat(yContSpells).ToList();
     }
 
     public void PreCast (int axis, Vector3? startDirLS)
@@ -47,9 +45,9 @@ public class SPELLS : MonoBehaviour
     public void StartCast (int taps)
     {
         isPreCasting = false;
-        if ( tapSpells[preCastHand.ButtonAxis * (taps - 1)] )
+        if ( allSpells[3 * preCastHand.ButtonAxis + taps - 1] )
         {
-            GameObject spell = Instantiate(tapSpells[preCastHand.ButtonAxis * (taps - 1)].gameObject);
+            GameObject spell = Instantiate(allSpells[3 * preCastHand.ButtonAxis + taps - 1].gameObject);
             spell.transform.SetParent(preCastHand.Hand.transform, false);
         }
         else
@@ -61,6 +59,7 @@ public class SPELLS : MonoBehaviour
 
     public void FailCast_NoSpell (CastHand hand)
     {
+        Debug.Log("FailCast_NoSpell");
         player.ReleaseHand(hand);
     }
 

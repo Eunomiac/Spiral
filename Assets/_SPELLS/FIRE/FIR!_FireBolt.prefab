@@ -1,51 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &198408
+--- !u!1 &183976
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 455970}
-  - 114: {fileID: 11427978}
+  - 4: {fileID: 431138}
+  - 114: {fileID: 11499768}
   m_Layer: 0
-  m_Name: FIR_FireBolt1_FX
+  m_Name: FIR!_FireBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &455970
+--- !u!4 &431138
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198408}
+  m_GameObject: {fileID: 183976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11427978
+--- !u!114 &11499768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198408}
+  m_GameObject: {fileID: 183976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4729d8c68a4ccf043bef8eaf27b13bf8, type: 3}
+  m_Script: {fileID: 11500000, guid: f28a4bd720ebcd7428d3adc2a5368af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numBolts: 3
-  searchAngle: 60
-  damage: 20
-  knockback: 100000
-  speed: 1000
-  boltMaterial: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  spellName: Firebolt
+  castDurationInBeats: 1
+  startCastFXPrefab: {fileID: 100240, guid: dfd9c280c55ac5c428f20707d567d343, type: 2}
+  spellEffectPrefab: {fileID: 198408, guid: 08e7e088b04c6a44a9bd3e8f023a1897, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -55,5 +53,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 198408}
+  m_RootGameObject: {fileID: 183976}
   m_IsPrefabParent: 1

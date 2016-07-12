@@ -45,17 +45,14 @@ public class PLAYER : MonoBehaviour
             NavNetwork.BuildNavNodes(gameObject, nodesPerTier, radiusOfTier);
             transform.hasChanged = false;
         }
-        AimHand();
+        TweenHand();
     }
 
-    bool AimHand ()
+    bool TweenHand ()
     {
         if ( !ActiveHand && !ClaimHand() )
             return false;
-        if ( (input.LSVector == null) == ActiveHand.gameObject.activeSelf )
-            ActiveHand.gameObject.SetActive(input.LSVector != null);
-        if ( input.LSVector != null )
-            ActiveHand.transform.localRotation = Quaternion.Euler(0, (float) input.LSAngle, 0);
+        ActiveHand.TweenRotate(input.LSVector);
         return true;
     }
 
@@ -65,6 +62,7 @@ public class PLAYER : MonoBehaviour
         if ( idleHands.Count == 0 )
             return false;
         ActiveHand = idleHands.Pop();
+        ActiveHand.ToggleActive(true);
         ActiveHand.FadeHand(false);
         return true;
     }
@@ -75,6 +73,7 @@ public class PLAYER : MonoBehaviour
         if ( ActiveHand == null )
             return false;
         busyHands.Push(ActiveHand);
+        ActiveHand.ToggleActive(false);
         ActiveHand = null;
         return true;
     }
