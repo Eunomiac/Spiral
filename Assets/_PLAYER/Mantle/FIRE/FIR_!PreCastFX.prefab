@@ -11,7 +11,7 @@ GameObject:
   - 198: {fileID: 19827892}
   - 199: {fileID: 19948010}
   m_Layer: 0
-  m_Name: FIR!_PreCastFX
+  m_Name: FIR_!PreCastFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

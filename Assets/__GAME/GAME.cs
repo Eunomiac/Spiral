@@ -17,26 +17,28 @@ public class GAME : MonoBehaviour
 
 
     #region Object Caching
+    public static AUDIO Audio { get; set; }
     public static ARENA Arena { get; set; }
     public static INPUT Input { get; set; }
     public static MANTLE Mantle { get; set; }
     public static PLAYER Player { get; set; }
-    public static SPELLS Spells { get; set; }
+    public static MAGIC Magic { get; set; }
     public static THREATS Threats { get; set; }
 
     void Awake ()
     {
+        Audio = FindObjectOfType<AUDIO>();
         Arena = FindObjectOfType<ARENA>();
         Input = FindObjectOfType<INPUT>();
         Mantle = FindObjectOfType<MANTLE>();
         Player = FindObjectOfType<PLAYER>();
-        Spells = FindObjectOfType<SPELLS>();
+        Magic = FindObjectOfType<MAGIC>();
         Threats = FindObjectOfType<THREATS>();
     }
     #endregion
 
     public static float BeatDuration
     {
-        get { return beatDuration + UnityEngine.Random.Range(-beatDuration * 0.1f, beatDuration * 0.1f); }
+        get { return beatDuration + Random.Range(-beatDuration * 0.1f, beatDuration * 0.1f); }
     }
 }

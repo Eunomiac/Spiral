@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class THREATS : MonoBehaviour
 {
-
     public bool isShowingDestination = false;
     private List<EnemyAI> registeredAttackers = new List<EnemyAI>();
 
@@ -48,6 +47,8 @@ public class THREATS : MonoBehaviour
     public List<EnemyAI> GetEnemies (float minAngle = 0f, float maxAngle = 360f, bool isDistSorting = true)
     {
         List<EnemyAI> theseEnemies = GetComponentsInChildren<EnemyAI>().ToList();
+        if ( theseEnemies.Count == 0 )
+            return theseEnemies;
         if ( minAngle != 0f || maxAngle != 360f )
         {
             EnemyAI[] enemyArray = new EnemyAI[theseEnemies.Count];

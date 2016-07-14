@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455970}
   - 114: {fileID: 11427978}
+  - 114: {fileID: 11439010}
   m_Layer: 0
   m_Name: FIR_FireBolt
   m_TagString: Untagged
@@ -23,8 +24,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,9 +41,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4729d8c68a4ccf043bef8eaf27b13bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numBolts: 5
+  numBolts: 3
   searchAngle: 60
-  boltPrefab: {fileID: 175710, guid: d692ae1c6450d784984cc4c0c202e921, type: 2}
+  damage: 25
+  knockback: 100000
+  boltLaunchSFX:
+  - {fileID: 8300000, guid: 6e2f6c88946ef9444913804f1680da47, type: 3}
+  - {fileID: 8300000, guid: c2690e94e92e1be42a55006940f71ef4, type: 3}
+  - {fileID: 8300000, guid: a25e114e606607349b2d1ff18a899330, type: 3}
+  - {fileID: 8300000, guid: 8df467c33df76f24d9f5e4af7668c3be, type: 3}
+  - {fileID: 8300000, guid: de52394ce9a41dc45b86d4d1a9ae21bf, type: 3}
+  boltImpactSFX:
+  - {fileID: 8300000, guid: 6a79d0a32b830174ea2b17eb9a82d4fa, type: 3}
+  boltPrefab: {fileID: 128132, guid: 2360ba7a44838fc40babab6918493f3e, type: 2}
+  impactPrefab: {fileID: 121290, guid: 9e0f3b62aa4009c4f822604a8a3bef1b, type: 2}
+--- !u!114 &11439010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ef9251879993d409c47aab2d2165f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellName: Firebolt
+  castDurationInBeats: 1
+  spellType: 0
+  handSpeedWhileCasting: 0
+  startCastFXPrefab: {fileID: 11407504, guid: 17ed9b3b479bd0f4daa0096085e74193, type: 2}
+  startCastSFX: {fileID: 8300000, guid: ab10a85162de70d4e8c2c043ff4fc5ed, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

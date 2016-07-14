@@ -73,12 +73,8 @@ public static class ExtMethods
     // Returns closest angular distance to given angle, between -180f and 180f.
     public static float Diff (this float angle, float angleA)
     {
-        float thisAngle = angle.Clamp();
-        angleA = angleA.Clamp();
-        float diff = (angleA - thisAngle).Clamp();
-        diff += (diff <= -180f) ? 360f : 0f;
-        diff -= (diff > 180f) ? 360f : 0f;
-        return diff;
+        float diff = (angleA.Clamp() - angle.Clamp()).Clamp();
+        return diff + (diff <= -180 ? 360 : 0) - (diff > 180 ? 360 : 0);
     }
 
     // Returns TRUE if given angle is between parameter angles on acute side.
@@ -91,24 +87,43 @@ public static class ExtMethods
     #endregion
 
     #region Vector3 Methods
+
+    // "Flattens" a Vector3 on the xz-plane, setting its y-value to zero OR the provided value.
+    public static Vector3 Flatten (this Vector3 vec, float yVal = 0f)
+    {
+        return new Vector3(vec.x, yVal, vec.z);
+    }
+
     // Returns TRUE if given vector equals parameter vector, with fuzziness parameter.
     public static bool FuzzyEquals (this Vector3 vec1, Vector3 vec2, float fuzziness = 0.2f)
     {
-        return (vec1 - vec2).sqrMagnitude < fuzziness;
+        return (vec1.Flatten() - vec2.Flatten()).sqrMagnitude < fuzziness;
+    }
+
+    // Returns a flattened orthogonal Vector3 from two points, of a supplied length, counter-clockwise from point 1 to point 2. 
+    public static Vector3 Normal2D (this Vector3 vec1, Vector3 vec2, float length, float yVal = 0f)
+    {
+        Vector3 diffVec = vec2.Flatten(yVal) - vec1.Flatten(yVal);
+        Vector3 orthoVec = new Vector3(-diffVec.z, 0f, diffVec.x) / diffVec.magnitude;
+        return orthoVec * length;
     }
 
     // Returns 2D distance between two Vector3's, ignoring y-value.
     public static float Distance2D (this Vector3 vec1, Vector3 vec2)
     {
-        vec1 = new Vector3(vec1.x, 0f, vec1.z);
-        vec2 = new Vector3(vec2.x, 0f, vec2.z);
-        return Vector3.Distance(vec1, vec2);
+        return Vector3.Distance(vec1.Flatten(), vec2.Flatten());
+    }
+
+    // Returns 2D normalized Vector3 given a Vector3, ignoring y-values.
+    public static Vector3 Normalize2D (this Vector3 vec, float yVal = 0f)
+    {
+        return Vector3.Normalize(vec.Flatten(0f)).Flatten(yVal);
     }
 
     // Returns facing angle of a given vector, ignoring y-value, with (0,1) equalling 0 degrees.
     public static float FacingAngle (this Vector3 vec)
     {
-        return vec.x >= 0 ? Vector3.Angle(Vector3.forward, vec) : (360f - Vector3.Angle(Vector3.forward, vec));
+        return vec.x >= 0 ? Vector3.Angle(Vector3.forward, vec.Flatten()) : (360f - Vector3.Angle(Vector3.forward, vec.Flatten()));
     }
     #endregion
 

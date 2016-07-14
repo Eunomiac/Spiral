@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aTapSpells:
-  - {fileID: 0}
+  - {fileID: 11439010, guid: 08e7e088b04c6a44a9bd3e8f023a1897, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   bTapSpells:
@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   xTapSpells:
-  - {fileID: 183976, guid: c6ffc9e35c289374da54b3ec51f0e435, type: 2}
+  - {fileID: 11439010, guid: 08e7e088b04c6a44a9bd3e8f023a1897, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   yTapSpells:
@@ -72,7 +72,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  isPreCasting: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -14,28 +14,26 @@ public class PLAYER : MonoBehaviour
     private List<string> spellButtons = new List<string>(new string[] { "A", "B", "X", "Y" });
 
     private ARENA arena;
-    private INPUT input;
     //private MANTLE mantle;
-    private SPELLS spells;
+    private MAGIC magic;
 
     public NavNetwork NavNetwork { get; set; }
     public CastHand ActiveHand { get; set; }
     public CastHand CurrentHand { get; set; }
+    public List<CastHand> IdleHands { get { return idleHands; } }
 
     void Awake ()
     {
         arena = GAME.Arena;
-        input = GAME.Input;
         //mantle = GAME.Mantle;
-        spells = GAME.Spells;
+        magic = GAME.Magic;
     }
 
     void Start ()
     {
         NavNetwork = arena.InitializeNavNetwork(gameObject, nodesPerTier, radiusOfTier, maxNeighbourDistMult);
         idleHands = GetComponentsInChildren<CastHand>().ToList();
-        foreach ( CastHand hand in idleHands )
-            hand.FadeHand(true);
+        ClaimHand();
     }
 
     void Update ()
@@ -45,73 +43,40 @@ public class PLAYER : MonoBehaviour
             NavNetwork.BuildNavNodes(gameObject, nodesPerTier, radiusOfTier);
             transform.hasChanged = false;
         }
-        TweenHand();
-    }
-
-    bool TweenHand ()
-    {
-        if ( !ActiveHand && !ClaimHand() )
-            return false;
-        ActiveHand.TweenRotate(input.LSVector);
-        return true;
+        if ( ActiveHand == null && idleHands.Count > 0 )
+            ClaimHand();
     }
 
     // Get an idle hand and set it active for aiming spells with Left Stick.  Returns false if no idle hand available.
-    bool ClaimHand ()
+    void ClaimHand ()
     {
-        if ( idleHands.Count == 0 )
-            return false;
-        ActiveHand = idleHands.Pop();
-        ActiveHand.ToggleActive(true);
-        ActiveHand.FadeHand(false);
-        return true;
-    }
-
-    // Lock the active hand after it begins casting a spell.  Returns false if there is no active hand.
-    public bool LockHand ()
-    {
-        if ( ActiveHand == null )
-            return false;
-        busyHands.Push(ActiveHand);
-        ActiveHand.ToggleActive(false);
-        ActiveHand = null;
-        return true;
-    }
-
-    // Release the given hand, returning it to the idle hands pool.  Returns false if given hand is not in the busy pool.
-    public bool ReleaseHand (CastHand hand)
-    {
-        if ( busyHands.Remove(hand) )
-        {
-            idleHands.Push(hand);
-            hand.FadeHand(true);
-            return true;
-        }
-        return false;
+        idleHands.Pop().Status = CastHand.HandState.AIMING;
     }
 
     public void FirstTap (int axis, Vector3? startDirLS)
     {
         if ( ActiveHand != null && spellButtons.Contains(INPUT.ButtonAxes[axis]) )
-            spells.PreCast(axis, startDirLS);
-
+        {
+            ActiveHand.ButtonAxis = axis;
+            ActiveHand.Status = CastHand.HandState.PRECAST;
+        }
     }
 
     public void MultiTap (int axis, int taps)
     {
-        if ( spells.isPreCasting )
-            spells.StartCast(taps);
+        if ( CurrentHand.Status == CastHand.HandState.PRECAST )
+            CurrentHand.SpellDefPrefab = magic.GetTapSpell(axis, taps);
     }
 
     public void StartHold (int axis, int taps)
     {
-        spells.StartHold(CurrentHand, taps);
+        if ( CurrentHand.Status == CastHand.HandState.PRECAST )
+            CurrentHand.SpellDefPrefab = magic.GetHoldSpell(axis, taps);
     }
 
     public void EndHold ()
     {
-        spells.EndHold(CurrentHand);
-        CurrentHand = null;
+        CurrentHand.Status = CastHand.HandState.ENDHOLDCAST;
     }
 
     public void TakeHit (float strength)
