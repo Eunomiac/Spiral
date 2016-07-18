@@ -63,7 +63,7 @@ public class PLAYER : MonoBehaviour
     {
         if ( CurrentHand.Status == CastHand.HandState.PRECAST )
         {
-            SpellDef thisSpell = magic.GetTapSpell(axis, taps);
+            SpellMaster thisSpell = magic.GetTapSpell(axis, taps);
             if ( thisSpell )
                 CurrentHand.StartCast(thisSpell);
         }
@@ -73,7 +73,7 @@ public class PLAYER : MonoBehaviour
     {
         if ( CurrentHand.Status == CastHand.HandState.PRECAST )
         {
-            SpellDef thisSpell = magic.GetHoldSpell(axis, taps);
+            SpellMaster thisSpell = magic.GetHoldSpell(axis, taps);
             if ( thisSpell )
                 CurrentHand.StartCast(thisSpell);
         }

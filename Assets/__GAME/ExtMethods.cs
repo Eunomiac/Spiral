@@ -85,7 +85,7 @@ public static class ExtMethods
     }
     #endregion
 
-    #region Vector3 Methods
+    #region Transform & Vector3 Methods
 
     // "Flattens" a Vector3 on the xz-plane, setting its y-value to zero OR the provided value.
     public static Vector3 Flatten (this Vector3 vec, float yVal = 0f)
@@ -124,6 +124,15 @@ public static class ExtMethods
     {
         return vec.x >= 0 ? Vector3.Angle(Vector3.forward, vec.Flatten()) : (360f - Vector3.Angle(Vector3.forward, vec.Flatten()));
     }
+
+    // Iterates through children, destroying them all.
+    public static void DestroyAllChildren (this Transform transform)
+    {
+        foreach ( Transform child in transform )
+            child.DestroyAllChildren();
+        GameObject.Destroy(transform.gameObject);
+    }
+
     #endregion
 
     #region Tweening Methods

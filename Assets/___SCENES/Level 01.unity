@@ -597,23 +597,25 @@ Prefab:
     - target: {fileID: 11444348, guid: 318e66631c79fdd42b0a4c6456fa90b0, type: 2}
       propertyPath: aTapSpells.Array.data[0]
       value: 
-      objectReference: {fileID: 11427978, guid: 08e7e088b04c6a44a9bd3e8f023a1897,
+      objectReference: {fileID: 11485232, guid: c917a34019af0ab42872b6d13135abfb,
         type: 2}
     - target: {fileID: 11444348, guid: 318e66631c79fdd42b0a4c6456fa90b0, type: 2}
       propertyPath: xTapSpells.Array.data[0]
       value: 
-      objectReference: {fileID: 11427978, guid: 08e7e088b04c6a44a9bd3e8f023a1897,
+      objectReference: {fileID: 11485232, guid: c917a34019af0ab42872b6d13135abfb,
         type: 2}
     - target: {fileID: 11444348, guid: 318e66631c79fdd42b0a4c6456fa90b0, type: 2}
       propertyPath: aContSpells.Array.data[0]
       value: 
-      objectReference: {fileID: 11479560, guid: 73e7704e7b1e40742b77a5face235c59,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 11444348, guid: 318e66631c79fdd42b0a4c6456fa90b0, type: 2}
       propertyPath: xContSpells.Array.data[0]
       value: 
-      objectReference: {fileID: 11479560, guid: 73e7704e7b1e40742b77a5face235c59,
-        type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444348, guid: 318e66631c79fdd42b0a4c6456fa90b0, type: 2}
+      propertyPath: bTapSpells.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 318e66631c79fdd42b0a4c6456fa90b0, type: 2}
   m_IsPrefabParent: 0
@@ -706,7 +708,7 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10

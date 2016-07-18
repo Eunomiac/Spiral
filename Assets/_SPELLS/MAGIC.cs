@@ -5,19 +5,19 @@ using UnityEngine;
 public class MAGIC : MonoBehaviour
 {
 
-    public SpellDef[] aTapSpells = new SpellDef[GAME.maxTaps];
-    public SpellDef[] bTapSpells = new SpellDef[GAME.maxTaps];
-    public SpellDef[] xTapSpells = new SpellDef[GAME.maxTaps];
-    public SpellDef[] yTapSpells = new SpellDef[GAME.maxTaps];
-    public SpellDef[] aContSpells = new SpellDef[GAME.maxTaps];
-    public SpellDef[] bContSpells = new SpellDef[GAME.maxTaps];
-    public SpellDef[] xContSpells = new SpellDef[GAME.maxTaps];
-    public SpellDef[] yContSpells = new SpellDef[GAME.maxTaps];
+    public SpellMaster[] aTapSpells = new SpellMaster[GAME.maxTaps];
+    public SpellMaster[] bTapSpells = new SpellMaster[GAME.maxTaps];
+    public SpellMaster[] xTapSpells = new SpellMaster[GAME.maxTaps];
+    public SpellMaster[] yTapSpells = new SpellMaster[GAME.maxTaps];
+    public SpellMaster[] aContSpells = new SpellMaster[GAME.maxTaps];
+    public SpellMaster[] bContSpells = new SpellMaster[GAME.maxTaps];
+    public SpellMaster[] xContSpells = new SpellMaster[GAME.maxTaps];
+    public SpellMaster[] yContSpells = new SpellMaster[GAME.maxTaps];
 
     [HideInInspector]
     public enum FailCondition { NOSUCHSPELL };
 
-    private List<SpellDef> allSpells = new List<SpellDef>();
+    private List<SpellMaster> allSpells = new List<SpellMaster>();
 
     //private MANTLE mantle;
     private PLAYER player;
@@ -29,18 +29,18 @@ public class MAGIC : MonoBehaviour
         allSpells = aTapSpells.Concat(bTapSpells).Concat(xTapSpells).Concat(yTapSpells).Concat(aContSpells).Concat(bContSpells).Concat(xContSpells).Concat(yContSpells).ToList();
     }
 
-    public SpellDef GetTapSpell (int axis, int taps)
+    public SpellMaster GetTapSpell (int axis, int taps)
     {
-        SpellDef thisSpell = allSpells[GAME.maxTaps * axis + taps - 1];
+        SpellMaster thisSpell = allSpells[GAME.maxTaps * axis + taps - 1];
         if ( thisSpell == null )
             FailCast(player.CurrentHand, FailCondition.NOSUCHSPELL);
         return thisSpell;
     }
 
-    public SpellDef GetHoldSpell (int axis, int taps)
+    public SpellMaster GetHoldSpell (int axis, int taps)
     {
         Debug.Log("HoldSpell = " + (GAME.maxTaps * (axis + 4) + taps - 1));
-        SpellDef thisSpell = allSpells[GAME.maxTaps * (axis + 4) + taps - 1];
+        SpellMaster thisSpell = allSpells[GAME.maxTaps * (axis + 4) + taps - 1];
         if ( thisSpell == null )
             FailCast(player.CurrentHand, FailCondition.NOSUCHSPELL);
         return thisSpell;

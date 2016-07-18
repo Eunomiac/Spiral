@@ -12,10 +12,9 @@ public class CastHand : MonoBehaviour
 
     public GameObject Hand { get { return hand; } }
     public GameObject PreCastFX { get; set; }
-    public GameObject StartCastFX { get; set; }
-    public GameObject SpellDef { get; set; }
     public int? ButtonAxis { get; set; }
-    public SpellDef SpellDefPrefab { get; set; }
+    public SpellMaster SpellPrefab { get; set; }
+    public SpellMaster Spell { get; set; }
 
     public enum HandState { AIMING, IDLE, PRECAST, STARTCAST, TAPCASTING, HOLDCASTING, ENDHOLDCAST, COUNTERCASTING, DUALCASTING, UPCASTING };
 
@@ -24,7 +23,7 @@ public class CastHand : MonoBehaviour
         get { return status; }
         set {
             status = value;
-            Debug.Log(name + " = " + value.ToString());
+            //Debug.Log(name + " = " + value.ToString());
             switch ( status )
             {
                 case HandState.AIMING:
@@ -97,7 +96,7 @@ public class CastHand : MonoBehaviour
                 break;
             case HandState.HOLDCASTING:
                 if ( inputAngle != null )
-                    rotator.rotate((float) inputAngle, SpellDefPrefab.handSpeedWhileCasting);
+                    rotator.rotate((float) inputAngle, Spell.HandSpeed);
                 break;
             default:
                 break;
@@ -124,25 +123,29 @@ public class CastHand : MonoBehaviour
         Status = HandState.PRECAST;
     }
 
-    public void StartCast (SpellDef spellDefinition)
+    public void StartCast (SpellMaster spellDef)
     {
         System.Diagnostics.Trace.Assert(Status == HandState.PRECAST);
         Destroy(PreCastFX.gameObject);
-        SpellDefPrefab = spellDefinition;
-        //Status = HandState.STARTCAST;
-        SpellDef = Instantiate(SpellDefPrefab).gameObject;
-        SpellDef.transform.SetParent(Hand.transform, false);
+        SpellPrefab = spellDef;
+        Spell = Instantiate(SpellPrefab);
+        Spell.transform.SetParent(Hand.transform, false);
+        Spell.Initialize();
+    }
+
+    public void ConfirmStatus (HandState state)
+    {
+        if ( Status != state )
+            Status = state;
     }
 
     public void ClearSpells ()
     {
         ButtonAxis = null;
-        SpellDefPrefab = null;
+        SpellPrefab = null;
         if ( PreCastFX )
             Destroy(PreCastFX.gameObject);
-        if ( StartCastFX )
-            Destroy(StartCastFX.gameObject);
         PreCastFX = null;
-        StartCastFX = null;
+        Spell = null;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class FIR_Fireball : SpellDef
+public class FIR_Fireball : SpellMaster
 {
     public float minDistance, maxDistance;
     public float growthRate;
@@ -21,37 +21,37 @@ public class FIR_Fireball : SpellDef
 
     private float castDuration;
 
-    public override void Start ()
-    {
-        base.Start();
-        StartCasting(3f);
-        castingHand.Status = CastHand.HandState.HOLDCASTING;
-        targeter = Instantiate(targetingPrefab);
-        targeter.transform.SetParent(castingHand.transform, false);
-        scalePerSec = (endDist - startDist) / secsToFull;
-        targeter.transform.localScale = new Vector3(curDist, 1f, curDist);
-    }
+    //public override void Start ()
+    //{
+    //    base.Start();
+    //    StartCasting(3f);
+    //    castingHand.Status = CastHand.HandState.HOLDCASTING;
+    //    targeter = Instantiate(targetingPrefab);
+    //    targeter.transform.SetParent(castingHand.transform, false);
+    //    scalePerSec = (endDist - startDist) / secsToFull;
+    //    targeter.transform.localScale = new Vector3(curDist, 1f, curDist);
+    //}
 
-    void Update ()
-    {
-        if ( castingHand.Status == CastHand.HandState.HOLDCASTING )
-        {
-            curDist += scalePerSec * Time.deltaTime;
-            targeter.transform.localScale = new Vector3(curDist, 1f, curDist);
-        }
-        else if ( castingHand.Status == CastHand.HandState.ENDHOLDCAST )
-            InitializeSpellEffect();
-    }
+    //void Update ()
+    //{
+    //    if ( castingHand.Status == CastHand.HandState.HOLDCASTING )
+    //    {
+    //        curDist += scalePerSec * Time.deltaTime;
+    //        targeter.transform.localScale = new Vector3(curDist, 1f, curDist);
+    //    }
+    //    else if ( castingHand.Status == CastHand.HandState.ENDHOLDCAST )
+    //        InitializeSpellEffect();
+    //}
 
-    public override void InitializeSpellEffect ()
-    {
-        base.InitializeSpellEffect();
-        Destroy(targeter.gameObject);
-        castingHand.Status = CastHand.HandState.IDLE;
-        Debug.Log("Firing Fireball!");
-        Destroy(gameObject);
+    //public override void InitializeSpellEffect ()
+    //{
+    //    base.InitializeSpellEffect();
+    //    Destroy(targeter.gameObject);
+    //    castingHand.Status = CastHand.HandState.IDLE;
+    //    Debug.Log("Firing Fireball!");
+    //    Destroy(gameObject);
 
-    }
+    //}
 
 
 
