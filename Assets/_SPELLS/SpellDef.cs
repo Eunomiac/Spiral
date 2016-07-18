@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 public class SpellDef : MonoBehaviour
 {
     public string spellName;
@@ -9,51 +10,58 @@ public class SpellDef : MonoBehaviour
     public StartCastFX startCastFXPrefab;
     public AudioClip startCastSFX;
 
-    private SpellEffect spellEffectPrefab, spellEffect;
-    private CastHand castingHand;
+    protected StartCastFX startCastFX;
+    protected CastHand castingHand;
 
     [HideInInspector]
     public enum SpellType { TAP, COUNTER, HOLD };
 
-    public CastHand CastingHand { get { return castingHand; } }
-    public SpellType TypeOfSpell { get { return spellType; } }
-
-    private PLAYER player;
+    //private PLAYER player;
     private MAGIC magic;
 
-    void Awake ()
+    public virtual void Awake ()
     {
-        player = GAME.Player;
+        //player = GAME.Player;
         magic = GAME.Magic;
     }
 
-    void Start ()
+    public virtual void Start ()
     {
         castingHand = GetComponentInParent<CastHand>();
-        spellEffectPrefab = GetComponent<SpellEffect>();
-        Invoke("LaunchSpell", castDurationInBeats * GAME.BeatDuration);
-    }
-
-    public virtual void LaunchSpell ()
-    {
-        spellEffect = (new GameObject(spellName + " Effect", spellEffectPrefab.GetType())).GetComponent<SpellEffect>();
-        spellEffect.transform.position = transform.position;
-        spellEffect.transform.rotation = transform.rotation;
-        spellEffect.transform.SetParent(magic.transform, true);
-        spellEffect.Initialize(this);
-        switch ( spellType )
+        if ( castDurationInBeats > 0f && startCastFXPrefab != null )
         {
-            case SpellType.TAP:
-                castingHand.Status = CastHand.HandState.TAPCASTING;
-                break;
-            case SpellType.COUNTER:
-                castingHand.Status = CastHand.HandState.COUNTERCASTING;
-                break;
-            case SpellType.HOLD:
-                castingHand.Status = CastHand.HandState.HOLDCASTING;
-                break;
+            Debug.Log("castDurationInBeats = " + castDurationInBeats.ToString());
+            StartCasting(castDurationInBeats * GAME.BeatDuration * 2f);
+            Invoke("InitializeSpellEffect", castDurationInBeats * GAME.BeatDuration);
         }
     }
 
+    public virtual void StartCasting (float duration)
+    {
+        castingHand.Status = CastHand.HandState.STARTCAST;
+        startCastFX = Instantiate(startCastFXPrefab);
+        startCastFX.transform.SetParent(transform, false);
+        GameObject startSound = GAME.Audio.PlaySound(startCastSFX);
+        GAME.Audio.VolumeTween(startSound, duration);
+    }
+
+    public virtual void InitializeSpellEffect ()
+    {
+        System.Diagnostics.Trace.Assert(castingHand.Status == CastHand.HandState.STARTCAST);
+        Destroy(startCastFX.gameObject);
+        transform.SetParent(magic.transform, true);
+        //switch ( spellType )
+        //{
+        //    case SpellType.TAP:
+        //        castingHand.Status = CastHand.HandState.TAPCASTING;
+        //        break;
+        //    case SpellType.COUNTER:
+        //        castingHand.Status = CastHand.HandState.COUNTERCASTING;
+        //        break;
+        //    case SpellType.HOLD:
+        //        castingHand.Status = CastHand.HandState.HOLDCASTING;
+        //        break;
+        //}
+    }
 
 }

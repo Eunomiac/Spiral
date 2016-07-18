@@ -10,11 +10,10 @@ public class PLAYER : MonoBehaviour
     public float armLength = 2f;
 
     private List<CastHand> idleHands = new List<CastHand>();
-    private List<CastHand> busyHands = new List<CastHand>();
     private List<string> spellButtons = new List<string>(new string[] { "A", "B", "X", "Y" });
 
     private ARENA arena;
-    //private MANTLE mantle;
+    private MANTLE mantle;
     private MAGIC magic;
 
     public NavNetwork NavNetwork { get; set; }
@@ -25,7 +24,7 @@ public class PLAYER : MonoBehaviour
     void Awake ()
     {
         arena = GAME.Arena;
-        //mantle = GAME.Mantle;
+        mantle = GAME.Mantle;
         magic = GAME.Magic;
     }
 
@@ -50,38 +49,45 @@ public class PLAYER : MonoBehaviour
     // Get an idle hand and set it active for aiming spells with Left Stick.  Returns false if no idle hand available.
     void ClaimHand ()
     {
-        idleHands.Pop().Status = CastHand.HandState.AIMING;
+        CastHand thisHand = idleHands.Pop();
+        thisHand.Status = CastHand.HandState.AIMING;
     }
 
     public void FirstTap (int axis, Vector3? startDirLS)
     {
         if ( ActiveHand != null && spellButtons.Contains(INPUT.ButtonAxes[axis]) )
-        {
-            ActiveHand.ButtonAxis = axis;
-            ActiveHand.Status = CastHand.HandState.PRECAST;
-        }
+            ActiveHand.PreCast(mantle.preCastFXPrefab, axis);
     }
 
     public void MultiTap (int axis, int taps)
     {
         if ( CurrentHand.Status == CastHand.HandState.PRECAST )
-            CurrentHand.SpellDefPrefab = magic.GetTapSpell(axis, taps);
+        {
+            SpellDef thisSpell = magic.GetTapSpell(axis, taps);
+            if ( thisSpell )
+                CurrentHand.StartCast(thisSpell);
+        }
     }
 
     public void StartHold (int axis, int taps)
     {
         if ( CurrentHand.Status == CastHand.HandState.PRECAST )
-            CurrentHand.SpellDefPrefab = magic.GetHoldSpell(axis, taps);
+        {
+            SpellDef thisSpell = magic.GetHoldSpell(axis, taps);
+            if ( thisSpell )
+                CurrentHand.StartCast(thisSpell);
+        }
     }
 
     public void EndHold ()
     {
+        Debug.Log("Ending Hold!");
         CurrentHand.Status = CastHand.HandState.ENDHOLDCAST;
     }
 
     public void TakeHit (float strength)
     {
-        Debug.Log("Took hit of " + strength + " strength!");
+        //Debug.Log("Took hit of " + strength + " strength!");
     }
 
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SpellEffect : MonoBehaviour
+public class SpellEffectBACKUP : MonoBehaviour
 {
     //private SpellDef spellDef;
     //private CastHand castingHand;

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public static class ExtMethods
 {
-
     #region Array, List & Dictionary Methods
     // Returns value in an array given ANY (int)index, wrapping as necessary.
     public static T Wrap<T> (this T[] array, int index)
@@ -126,5 +125,44 @@ public static class ExtMethods
         return vec.x >= 0 ? Vector3.Angle(Vector3.forward, vec.Flatten()) : (360f - Vector3.Angle(Vector3.forward, vec.Flatten()));
     }
     #endregion
+
+    #region Tweening Methods
+
+    public static Vector3[] TweenPathTo (this Vector3 startPos, Vector3 endPos, int numBends, float deviationDist, bool isStraightening = false, bool isFirstBendPositive = false)
+    {
+        Vector3[] thisPath = new Vector3[numBends + 4 + (isStraightening ? 1 : 0)];
+        Vector3 pathNormalized = (endPos - startPos).Normalize2D(startPos.y);
+        float travelDist = startPos.Distance2D(endPos);
+
+        float stepDist = travelDist / (numBends + 1) * (isStraightening ? 0.75f : 1f);
+        thisPath[0] = startPos - (pathNormalized * travelDist * 0.25f);
+        thisPath[1] = startPos;
+        for ( int i = 2; i < 2 + numBends; i++ )
+        {
+            float thisDistance = stepDist * (i - 1);
+            Vector3 pointOnPath = pathNormalized * thisDistance;
+            float thisDeviation = deviationDist * (i % 2 == 0 ? 1 : -1) * (isFirstBendPositive ? 1 : -1);
+            thisPath[i] = (startPos.Normal2D(pointOnPath, thisDeviation) + pointOnPath + startPos).Flatten(startPos.y);
+        }
+        if ( isStraightening )
+            thisPath[numBends + 2] = (endPos - (pathNormalized * travelDist * 0.25f)).Flatten(startPos.y);
+        thisPath[numBends + 2 + (isStraightening ? 1 : 0)] = endPos.Flatten(startPos.y);
+        thisPath[numBends + 3 + (isStraightening ? 1 : 0)] = (endPos + (pathNormalized * travelDist * 0.25f)).Flatten(startPos.y);
+
+
+        return thisPath;
+    }
+
+    #endregion
+
+    #region Debug Methods
+
+
+
+
+
+
+    #endregion
+
 
 }

@@ -14,26 +14,42 @@ public class MAGIC : MonoBehaviour
     public SpellDef[] xContSpells = new SpellDef[GAME.maxTaps];
     public SpellDef[] yContSpells = new SpellDef[GAME.maxTaps];
 
+    [HideInInspector]
+    public enum FailCondition { NOSUCHSPELL };
+
     private List<SpellDef> allSpells = new List<SpellDef>();
 
-    private MANTLE mantle;
+    //private MANTLE mantle;
     private PLAYER player;
 
     void Awake ()
     {
-        mantle = GAME.Mantle;
+        //mantle = GAME.Mantle;
         player = GAME.Player;
         allSpells = aTapSpells.Concat(bTapSpells).Concat(xTapSpells).Concat(yTapSpells).Concat(aContSpells).Concat(bContSpells).Concat(xContSpells).Concat(yContSpells).ToList();
     }
 
     public SpellDef GetTapSpell (int axis, int taps)
     {
-        return allSpells[GAME.maxTaps * axis + taps - 1];
+        SpellDef thisSpell = allSpells[GAME.maxTaps * axis + taps - 1];
+        if ( thisSpell == null )
+            FailCast(player.CurrentHand, FailCondition.NOSUCHSPELL);
+        return thisSpell;
     }
 
     public SpellDef GetHoldSpell (int axis, int taps)
     {
-        return allSpells[4 * GAME.maxTaps * axis + taps - 1];
+        Debug.Log("HoldSpell = " + (GAME.maxTaps * (axis + 4) + taps - 1));
+        SpellDef thisSpell = allSpells[GAME.maxTaps * (axis + 4) + taps - 1];
+        if ( thisSpell == null )
+            FailCast(player.CurrentHand, FailCondition.NOSUCHSPELL);
+        return thisSpell;
     }
 
+    public void FailCast (CastHand hand, FailCondition reason)
+    {
+        if ( reason == FailCondition.NOSUCHSPELL )
+            Debug.Log("Failed Cast with " + hand.name + " hand: NO SUCH SPELL");
+        hand.Status = CastHand.HandState.IDLE;
+    }
 }
