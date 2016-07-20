@@ -43,7 +43,7 @@ public class NavNetwork : MonoBehaviour
         for ( int i = 0; i < nodesPerTier[0]; i++ )
         {
             Wedge thisWedge = new GameObject().AddComponent<Wedge>();
-            thisWedge.transform.SetParent(transform);
+            thisWedge.gameObject.SetParent(gameObject);
             thisWedge.MinAngle = (angleSpread * i - angleSplit).Clamp();
             thisWedge.MaxAngle = (angleSpread * i + angleSplit - Mathf.Epsilon).Clamp();
             thisWedge.name = "Wedge " + i + ": " + Mathf.RoundToInt(thisWedge.MinAngle) + "-" + Mathf.RoundToInt(thisWedge.MaxAngle);
@@ -65,7 +65,7 @@ public class NavNetwork : MonoBehaviour
         centerNode.Index = 0;
         centerNode.RandomOffset = 1f;
         centerNode.Angle = 0f;
-        centerNode.transform.SetParent(transform);
+        centerNode.gameObject.SetParent(gameObject);
         navNodes = new Node[nodesPerTier.Length][];
 
         for ( int tier = 0; tier < nodesPerTier.Length; tier++ )
@@ -111,7 +111,7 @@ public class NavNetwork : MonoBehaviour
                 Vector3 nodePosition = Quaternion.Euler(0, thisNode.Angle, 0) * startVector * thisNode.RandomOffset + centerPos;
                 thisNode.transform.position = nodePosition;
                 Wedge thisWedge = GetWedgeFromAngle(thisNode.Angle);
-                thisNode.transform.SetParent(thisWedge.transform);
+                thisNode.gameObject.SetParent(thisWedge.gameObject);
                 thisWedge.Nodes.Add(thisNode);
                 if ( arena.showLabels ) { thisNode.SetNodeLabel(); }                                          // Debug
                 if ( arena.showConnections ) { thisNode.DrawNeighbourLines(arena.lineMaterial); }             //

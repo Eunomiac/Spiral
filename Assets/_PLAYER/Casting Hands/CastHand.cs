@@ -119,7 +119,7 @@ public class CastHand : MonoBehaviour
     {
         ButtonAxis = buttonAxis;
         PreCastFX = Instantiate(preCastFX);
-        PreCastFX.transform.SetParent(Hand.transform, false);
+        PreCastFX.gameObject.SetParent(Hand.gameObject, false);
         Status = HandState.PRECAST;
     }
 
@@ -129,7 +129,7 @@ public class CastHand : MonoBehaviour
         Destroy(PreCastFX.gameObject);
         SpellPrefab = spellDef;
         Spell = Instantiate(SpellPrefab);
-        Spell.transform.SetParent(Hand.transform, false);
+        Spell.gameObject.SetParent(Hand.gameObject, false);
         Spell.Initialize();
     }
 

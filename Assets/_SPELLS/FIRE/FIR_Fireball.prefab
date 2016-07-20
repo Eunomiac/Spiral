@@ -9,7 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 476660}
   - 114: {fileID: 11458896}
-  - 114: {fileID: 11469654}
+  - 114: {fileID: 11458352}
+  - 114: {fileID: 11440096}
+  - 114: {fileID: 11403854}
   m_Layer: 0
   m_Name: FIR_Fireball
   m_TagString: Untagged
@@ -30,6 +32,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11403854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dadb635f1a6333d46bd43c77028969de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castHandState: 4
+  handSpeedWhileCasting: 0
+  durationOverride: 5
+  damage: 100
+  knockback: 10000
+  explosionSFX:
+  - {fileID: 8300000, guid: ca2a086a7dfa8a2408dcf4d79283d8a7, type: 3}
+  explosionPrefab: {fileID: 120000, guid: 7fc29f006e3420d4f88a869b8debc569, type: 2}
+--- !u!114 &11440096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa318e1cac8af44d914e2a98e2beccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castHandState: 4
+  handSpeedWhileCasting: 0
+  durationOverride: 0
+  numBolts: 1
+  travelTime: 1
+  timeBetweenBolts: 0.3
+  searchAngle: 60
+  minDist: 3
+  maxDist: 1000000
+  numDeviations: -1
+  minDev: 3
+  maxDev: 1
+  isTurningToFaceTarget: 1
+  isRandomizingStepDistance: 1
+  pathMax: 2
+  easingMode: 1
+  boltLaunchSFX:
+  - {fileID: 8300000, guid: 7cd0a626b8e42a84fba858c4ff6a1a94, type: 3}
+  boltPrefab: {fileID: 166822, guid: cf9b652ea97f28e40badbce52caa4ae7, type: 2}
+--- !u!114 &11458352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be98b0dfc226e5a4d853957f4dad6100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castHandState: 3
+  handSpeedWhileCasting: 0
+  durationOverride: 0
+  StartCastFXPrefab: {fileID: 147804, guid: 17ed9b3b479bd0f4daa0096085e74193, type: 2}
+  StartCastSound: {fileID: 8300000, guid: ab10a85162de70d4e8c2c043ff4fc5ed, type: 3}
+  Duration: 1
 --- !u!114 &11458896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42,19 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpellName: Fireball
---- !u!114 &11469654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418ecfad38c22b840a24f302f6580c33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  castHandState: 5
-  handSpeedWhileCasting: 7
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

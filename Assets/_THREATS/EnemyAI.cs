@@ -26,9 +26,13 @@ public class EnemyAI : MonoBehaviour
      * */
     public float strength = 1f;
 
+    public bool IsImmobile { get; set; }
+
+
     private AIRig aiRig;
     private RAINMemory memory;
     private Rigidbody body;
+    private Vector3 prevPosition;
     //private BasicMind mind;
     //private BTPriorityNode mainPriorityNode;
     //private int attackNodeIndex;
@@ -100,10 +104,12 @@ public class EnemyAI : MonoBehaviour
         //mind = aiRig.AI.Mind as BasicMind;
         memory.SetItem("AttackStartPriority", 0);
         memory.SetItem("AttackRunPriority", 0);
+        IsImmobile = false;
     }
 
     void Start ()
     {
+        prevPosition = transform.position;
         //BTNode rootNode = mind.BehaviorRoot;
         //for ( int i = 0; i < rootNode.GetChildCount(); i++ )
         //{
@@ -114,6 +120,14 @@ public class EnemyAI : MonoBehaviour
         //	}
         //}
         //attackNodeIndex = mainPriorityNode.GetChildIndex(ATTACKNODE);
+    }
+
+    void LateUpdate ()
+    {
+        if ( IsImmobile )
+            transform.position = prevPosition;
+        else
+            prevPosition = transform.position;
     }
 
     public void TakeHit (float damage)

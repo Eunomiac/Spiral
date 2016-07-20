@@ -71,7 +71,8 @@ public class SpellMaster : MonoBehaviour
     public virtual void End ()
     {
         //Debug.Log("ENDING!");
-        transform.DestroyAllChildren();
+        if ( gameObject )
+            transform.DestroyAllChildren();
     }
 
 

@@ -15,6 +15,7 @@ public class GAME : MonoBehaviour
     public static float leeway = 0.4f;          // Max time between taps to combine them into a MultiTap.
     public static bool isDebugging = true;
 
+    public Material defaultMaterial;
     public GameObject indicatorPrefab;
 
     public static GameObject Indicator { get; set; }
@@ -59,10 +60,10 @@ public class GAME : MonoBehaviour
         GameObject theseIndicators = new GameObject(objName);
         for ( int i = 0; i < vectors.Length; i++ )
         {
-            GameObject thisIndicator = Instantiate(GAME.Indicator, vectors[i].Flatten(2f), Quaternion.identity) as GameObject;
+            GameObject thisIndicator = Instantiate(GAME.Indicator, vectors[i], Quaternion.identity) as GameObject;
             thisIndicator.name = "Point " + (i + 1);
             thisIndicator.GetComponentInChildren<SpriteRenderer>().color = thisColor;
-            thisIndicator.transform.SetParent(theseIndicators.transform, true);
+            thisIndicator.SetParent(theseIndicators, true);
         }
     }
 }
