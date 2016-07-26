@@ -5,14 +5,14 @@ using UnityEngine;
 public class MAGIC : MonoBehaviour
 {
 
-    public SpellMaster[] aTapSpells = new SpellMaster[GAME.maxTaps];
-    public SpellMaster[] bTapSpells = new SpellMaster[GAME.maxTaps];
-    public SpellMaster[] xTapSpells = new SpellMaster[GAME.maxTaps];
-    public SpellMaster[] yTapSpells = new SpellMaster[GAME.maxTaps];
-    public SpellMaster[] aContSpells = new SpellMaster[GAME.maxTaps];
-    public SpellMaster[] bContSpells = new SpellMaster[GAME.maxTaps];
-    public SpellMaster[] xContSpells = new SpellMaster[GAME.maxTaps];
-    public SpellMaster[] yContSpells = new SpellMaster[GAME.maxTaps];
+    public SpellMaster[] aTapSpells = new SpellMaster[GAME.MaxTaps];
+    public SpellMaster[] bTapSpells = new SpellMaster[GAME.MaxTaps];
+    public SpellMaster[] xTapSpells = new SpellMaster[GAME.MaxTaps];
+    public SpellMaster[] yTapSpells = new SpellMaster[GAME.MaxTaps];
+    public SpellMaster[] aContSpells = new SpellMaster[GAME.MaxTaps];
+    public SpellMaster[] bContSpells = new SpellMaster[GAME.MaxTaps];
+    public SpellMaster[] xContSpells = new SpellMaster[GAME.MaxTaps];
+    public SpellMaster[] yContSpells = new SpellMaster[GAME.MaxTaps];
 
     [HideInInspector]
     public enum FailCondition { NOSUCHSPELL };
@@ -31,7 +31,7 @@ public class MAGIC : MonoBehaviour
 
     public SpellMaster GetTapSpell (int axis, int taps)
     {
-        SpellMaster thisSpell = allSpells[GAME.maxTaps * axis + taps - 1];
+        SpellMaster thisSpell = allSpells[GAME.MaxTaps * axis + taps - 1];
         if ( thisSpell == null )
             FailCast(player.CurrentHand, FailCondition.NOSUCHSPELL);
         return thisSpell;
@@ -39,8 +39,8 @@ public class MAGIC : MonoBehaviour
 
     public SpellMaster GetHoldSpell (int axis, int taps)
     {
-        Debug.Log("HoldSpell = " + (GAME.maxTaps * (axis + 4) + taps - 1));
-        SpellMaster thisSpell = allSpells[GAME.maxTaps * (axis + 4) + taps - 1];
+        Debug.Log("HoldSpell = " + (GAME.MaxTaps * (axis + 4) + taps - 1));
+        SpellMaster thisSpell = allSpells[GAME.MaxTaps * (axis + 4) + taps - 1];
         if ( thisSpell == null )
             FailCast(player.CurrentHand, FailCondition.NOSUCHSPELL);
         return thisSpell;

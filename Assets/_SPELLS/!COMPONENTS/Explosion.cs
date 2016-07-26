@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class Explosion : SpellEffect
@@ -29,21 +28,9 @@ public class Explosion : SpellEffect
         if ( targetEnemy )
         {
             targetEnemy.TakeHit(damage);
-            StartCoroutine(ApplyKnockback(targetEnemy, forceDirection * knockback));
-        }
-        else
-        {
-            End();
-        }
-    }
-
-    IEnumerator ApplyKnockback (EnemyAI enemy, Vector3 knockbackVec)
-    {
-        for ( int i = 0; i < 20; i++ )
-        {
-            enemy.Knockback(knockbackVec * (1 - 0.05f * i));
-            yield return new WaitForFixedUpdate();
+            targetEnemy.Knockback(forceDirection * knockback);
         }
         End();
     }
+
 }

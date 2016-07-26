@@ -6,23 +6,31 @@
 public class GAME : MonoBehaviour
 {
 
-    public const int BIGINT = 1000000;
-
-    public static float beatDuration = 1f;      // The length of a single Beat in seconds.
-    public static int AllowedDownBeats = 2;     // The number of beats worth of inactivity before penalty.
-    public static int MaxSimultaneousAttacks = 3;
-    public static int maxTaps = 3;              // Maximum number of taps that will combine into a MultiTap.
-    public static float leeway = 0.4f;          // Max time between taps to combine them into a MultiTap.
-    public static bool isDebugging = true;
-
+    public float beatDuration = 1f;             // The length of a single Beat in seconds.
+    public int allowedDownBeats = 2;            // The number of beats worth of inactivity before penalty.
+    public int maxSimultaneousAttacks = 3;
+    public int maxTaps = 3;               // Maximum number of taps that will combine into a MultiTap.
+    public float leeway = 0.4f;              // Max time between taps to combine them into a MultiTap.
+    public bool isDebugging = true;
     public Material defaultMaterial;
     public GameObject indicatorPrefab;
 
-    public static GameObject Indicator { get; set; }
+    public const int BIGINT = 1000000;
+    public enum Element { FIRE, ARCANE }
+
+    public static float BeatDuration { get; set; }
+    public static int AllowedDownBeats { get; set; }
+    public static int MaxSimultaneousAttacks { get; set; }
+    public static int MaxTaps { get; set; }
+    public static float Leeway { get; set; }
+    public static bool IsDebugging { get; set; }
+    public static Material DefaultMaterial { get; set; }
+    public static GameObject IndicatorPrefab { get; set; }
 
     private static Color[] colorList = new Color[7] { Color.blue, Color.cyan, Color.gray, Color.green, Color.magenta, Color.red, Color.yellow };
 
     #region Object Caching
+    public static GAME Game { get; set; }
     public static AUDIO Audio { get; set; }
     public static ARENA Arena { get; set; }
     public static INPUT Input { get; set; }
@@ -33,6 +41,15 @@ public class GAME : MonoBehaviour
 
     void Awake ()
     {
+        Game = FindObjectOfType<GAME>();
+        BeatDuration = Game.beatDuration;
+        AllowedDownBeats = Game.allowedDownBeats;
+        MaxSimultaneousAttacks = Game.maxSimultaneousAttacks;
+        MaxTaps = Game.maxTaps;
+        Leeway = Game.leeway;
+        IsDebugging = Game.isDebugging;
+        DefaultMaterial = Game.defaultMaterial;
+        IndicatorPrefab = Game.indicatorPrefab;
         Audio = FindObjectOfType<AUDIO>();
         Arena = FindObjectOfType<ARENA>();
         Input = FindObjectOfType<INPUT>();
@@ -40,14 +57,13 @@ public class GAME : MonoBehaviour
         Player = FindObjectOfType<PLAYER>();
         Magic = FindObjectOfType<MAGIC>();
         Threats = FindObjectOfType<THREATS>();
-        Indicator = indicatorPrefab;
     }
     #endregion
 
-    public static float BeatDuration
-    {
-        get { return beatDuration + Random.Range(-beatDuration * 0.1f, beatDuration * 0.1f); }
-    }
+    //public static float BeatDuration
+    //{
+    //    get { return beatDuration + Random.Range(-beatDuration * 0.1f, beatDuration * 0.1f); }
+    //}
 
     public static Color RandomColor
     {
@@ -60,7 +76,7 @@ public class GAME : MonoBehaviour
         GameObject theseIndicators = new GameObject(objName);
         for ( int i = 0; i < vectors.Length; i++ )
         {
-            GameObject thisIndicator = Instantiate(GAME.Indicator, vectors[i], Quaternion.identity) as GameObject;
+            GameObject thisIndicator = Instantiate(GAME.IndicatorPrefab, vectors[i], Quaternion.identity) as GameObject;
             thisIndicator.name = "Point " + (i + 1);
             thisIndicator.GetComponentInChildren<SpriteRenderer>().color = thisColor;
             thisIndicator.SetParent(theseIndicators, true);

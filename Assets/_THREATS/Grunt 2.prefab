@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156f90b2413a63342a2679785684c2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackAlertPrefab: {fileID: 19826726, guid: 2772f5f13a9a4b34a8f4191bedbbe8f4, type: 2}
   strength: 1
 --- !u!212 &21251490
 SpriteRenderer:

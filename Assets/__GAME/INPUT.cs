@@ -95,7 +95,7 @@ public class INPUT : MonoBehaviour {
 					player.FirstTap(axisNum, startDirLS);
 				}
 			}
-			else if ( Time.time - lastTap[axisNum] > GAME.leeway )	// ELSE IF button held for longer than leeway, this is a **HOLD**.
+			else if ( Time.time - lastTap[axisNum] > GAME.Leeway )	// ELSE IF button held for longer than leeway, this is a **HOLD**.
 			{
 				if ( !isHeldDown[axisNum] )								// Check if this is continuing a hold, or starting a new one.
 				{
@@ -114,7 +114,7 @@ public class INPUT : MonoBehaviour {
 				tapCount[axisNum] = 0;
 				lastTap[axisNum] = 0;
 			}														// Else if leeway time passed and previous taps recorded, this is a **MULTITAP**.
-			else if ( tapCount[axisNum] > 0 && Time.time - lastTap[axisNum] > GAME.leeway || tapCount[axisNum] >= GAME.maxTaps )
+			else if ( tapCount[axisNum] > 0 && Time.time - lastTap[axisNum] > GAME.Leeway || tapCount[axisNum] >= GAME.MaxTaps )
 			{
 				player.MultiTap(axisNum, tapCount[axisNum]);
 				tapCount[axisNum] = 0;

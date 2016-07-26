@@ -206,8 +206,8 @@ MonoBehaviour:
       id="_ai" /></fields><references><reference type="RAIN.Core.AI" refcount="1"
       id="0"><field value="True" type="System.Boolean" id="_isActive" /><field type="UnityEngine.GameObject"
       id="_body" gameobject="0" /><field type="RAIN.Memory.BasicMemory" reference="1"
-      id="_workingMemory" childrenvisible="True" /><field type="RAIN.Minds.BasicMind"
-      reference="6" id="_mind" childrenvisible="False" /><field type="RAIN.Motion.BasicMotor"
+      id="_workingMemory" childrenvisible="False" /><field type="RAIN.Minds.BasicMind"
+      reference="6" id="_mind" childrenvisible="True" /><field type="RAIN.Motion.BasicMotor"
       reference="7" id="_motor" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator"
       reference="8" id="_animator" /><field type="RAIN.Navigation.BasicNavigator"
       reference="9" id="_navigator" /><field type="RAIN.Perception.BasicSenses" reference="10"
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156f90b2413a63342a2679785684c2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackAlertPrefab: {fileID: 19826726, guid: 2772f5f13a9a4b34a8f4191bedbbe8f4, type: 2}
   strength: 1
 --- !u!212 &21204822
 SpriteRenderer:

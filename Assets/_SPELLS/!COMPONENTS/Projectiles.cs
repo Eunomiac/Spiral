@@ -30,6 +30,7 @@ public class Projectiles : SpellEffect
     private Vector3 startPos, endPos;
     private float yValue;
     private int boltsFired = 0;
+    private int boltsToFire;
     //private GameObject impactPrefab;
 
     public override void SetParent (Transform masterTransform)
@@ -50,6 +51,7 @@ public class Projectiles : SpellEffect
         //Debug.Log("Details: " + minAngle + ", " + maxAngle + ", " + minDist + ", " + maxDist + ", " + numBolts);
         List<EnemyAI> enemyTargets = GAME.Threats.GetClosestEnemies(minAngle, maxAngle, minDist, maxDist, numBolts);
         startPos = transform.position.Flatten(yValue);
+        boltsToFire = enemyTargets.Count;
         StartCoroutine(FireBolts(enemyTargets, bolts));
         CastingHand.Status = CastHand.HandState.TAPCASTING;
     }
@@ -59,6 +61,7 @@ public class Projectiles : SpellEffect
         //Debug.Log("Coroutine Running.  Enemies = " + enemies.Count + ", Bolts = " + bolts.Count);
         foreach ( EnemyAI enemy in enemies )
         {
+            boltsToFire--;
             if ( enemy )
                 SetTarget(enemy);
             yield return new WaitForSeconds(timeBetweenBolts);
@@ -70,7 +73,7 @@ public class Projectiles : SpellEffect
     {
         while ( true )
         {
-            if ( bolts.Count == 0 && transform.GetComponentsInChildren<Explosion>().Length == 0 )
+            if ( bolts.Count == 0 && boltsToFire == 0 )
             {
                 Debug.Log("Count: " + bolts.Count + ", Comps: " + transform.GetComponentsInChildren<Explosion>().Length);
                 End();

@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: babfd05192186e24aa7e50719ab81636
+timeCreated: 1469513977
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BeatAnimationNoSpin_0
+    21300002: BeatAnimationNoSpin_1
+    21300004: BeatAnimationNoSpin_2
+    21300006: BeatAnimationNoSpin_3
+    21300008: BeatAnimationNoSpin_4
+    21300010: BeatAnimationNoSpin_5
+    21300012: BeatAnimationNoSpin_6
+    21300014: BeatAnimationNoSpin_7
+    21300016: BeatAnimationNoSpin_8
+    21300018: BeatAnimationNoSpin_9
+    21300020: BeatAnimationNoSpin_10
+    21300022: BeatAnimationNoSpin_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 25
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BeatAnimationNoSpin_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    - name: BeatAnimationNoSpin_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 29}
+        - {x: 24, y: 32}
+        - {x: -19, y: 32}
+        - {x: -31, y: 29}
+        - {x: -32, y: 22}
+        - {x: -32, y: -15}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 29, y: -17}
+        - {x: 32, y: -15}
+        - {x: 32, y: 11}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

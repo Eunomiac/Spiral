@@ -55,12 +55,18 @@ public class PLAYER : MonoBehaviour
 
     public void FirstTap (int axis, Vector3? startDirLS)
     {
-        if ( ActiveHand != null && spellButtons.Contains(INPUT.ButtonAxes[axis]) )
+        if ( INPUT.ButtonAxes[axis] == "LT" )
+            mantle.UpdateSpirrus(-1);
+        else if ( INPUT.ButtonAxes[axis] == "RT" )
+            mantle.UpdateSpirrus(+1);
+        else if ( ActiveHand != null && spellButtons.Contains(INPUT.ButtonAxes[axis]) )
             ActiveHand.PreCast(mantle.preCastFXPrefab, axis);
     }
 
     public void MultiTap (int axis, int taps)
     {
+        if ( INPUT.ButtonAxes[axis] == "LT" || INPUT.ButtonAxes[axis] == "RT" )
+            return;
         if ( CurrentHand.Status == CastHand.HandState.PRECAST )
         {
             SpellMaster thisSpell = magic.GetTapSpell(axis, taps);

@@ -1,12 +1,14 @@
 ﻿using RAIN.Core;
 using RAIN.Memory;
+using System.Collections;
 using UnityEngine;
-
 
 public class EnemyAI : MonoBehaviour
 {
 
     const string ATTACKNODE = "Attack";
+
+    public ParticleSystem attackAlertPrefab;
 
     /* USING RAIN AI FOR NAVIGATION
      * - 
@@ -33,6 +35,7 @@ public class EnemyAI : MonoBehaviour
     private RAINMemory memory;
     private Rigidbody body;
     private Vector3 prevPosition;
+    private ParticleSystem attackAlert;
     //private BasicMind mind;
     //private BTPriorityNode mainPriorityNode;
     //private int attackNodeIndex;
@@ -101,6 +104,7 @@ public class EnemyAI : MonoBehaviour
         aiRig = GetComponentInChildren<AIRig>();
         memory = aiRig.AI.WorkingMemory;
         body = GetComponent<Rigidbody>();
+
         //mind = aiRig.AI.Mind as BasicMind;
         memory.SetItem("AttackStartPriority", 0);
         memory.SetItem("AttackRunPriority", 0);
@@ -110,6 +114,10 @@ public class EnemyAI : MonoBehaviour
     void Start ()
     {
         prevPosition = transform.position;
+        attackAlert = Instantiate(attackAlertPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z) + Vector3.up + 2.5f * Vector3.forward, Quaternion.identity) as ParticleSystem;
+        attackAlert.transform.SetParent(transform, true);
+        attackAlert.Stop();
+
         //BTNode rootNode = mind.BehaviorRoot;
         //for ( int i = 0; i < rootNode.GetChildCount(); i++ )
         //{
@@ -138,7 +146,16 @@ public class EnemyAI : MonoBehaviour
     public void Knockback (Vector3 knockbackVec)
     {
         if ( body )
-            body.AddForce(knockbackVec);
+            StartCoroutine(ApplyKnockback(knockbackVec));
+    }
+
+    IEnumerator ApplyKnockback (Vector3 knockbackVec)
+    {
+        for ( int i = 0; i < 20; i++ )
+        {
+            body.AddForce(knockbackVec * (1 - 0.05f * i));
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     public void DeathBlow ()
@@ -165,6 +182,13 @@ public class EnemyAI : MonoBehaviour
 
     public void Attack ()
     {
+        attackAlert.Play();
+        Invoke("GoAttack", attackAlert.duration);
+    }
+
+    void GoAttack ()
+    {
+        attackAlert.Stop();
         SetPriority(ATTACKNODE, 100);
     }
 
