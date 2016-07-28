@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class MANTLE : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class MANTLE : MonoBehaviour
     public GAME.Element element;
     public int numTiers;
     public int[] spirrusPerTier;
+    public AudioClip cancelSpellSound;
 
     public int Tier { get; set; }
     public int Spirrus { get; set; }
@@ -14,9 +16,7 @@ public class MANTLE : MonoBehaviour
 
     public GameObject[] tempTierSprites;
 
-    private GameObject spirrusCount;
-
-
+    private Text spirrusDisplay;
 
     void Awake ()
     {
@@ -24,6 +24,8 @@ public class MANTLE : MonoBehaviour
         Tier = -1;
         foreach ( int spirrus in spirrusPerTier )
             maxSpirrus += spirrus;
+        foreach ( Transform child in transform )
+            spirrusDisplay = child.GetComponentInChildren<Text>() ?? spirrusDisplay;
 
     }
 
@@ -41,7 +43,7 @@ public class MANTLE : MonoBehaviour
             TriggerOverload();
         else
         {
-            spirrusCount = ChangeSpirrusCountImage();
+            spirrusDisplay.text = Spirrus.ToString();
             GetTierFromSpirrus();
         }
     }
@@ -73,20 +75,6 @@ public class MANTLE : MonoBehaviour
         if ( fromTier >= 0 && tempTierSprites[fromTier] )
             tempTierSprites[fromTier].SetActive(false);
         tempTierSprites[toTier].SetActive(true);
-    }
-
-
-    protected virtual GameObject ChangeSpirrusCountImage ()
-    {
-        if ( spirrusCount )
-        {
-            //Debug.Log("Destroying Spirrus Count!");
-            spirrusCount.transform.DestroyAllChildren(true);
-        }
-        GameObject thisSpirrusCount = SpriteToText.ParsePhrase(Spirrus.ToString(), Color.red);
-        thisSpirrusCount.transform.SetParent(transform, false);
-        thisSpirrusCount.transform.localPosition = new Vector3(-1.5f, 1f, -1.5f);
-        return thisSpirrusCount;
     }
 
     protected virtual void TriggerOverload ()

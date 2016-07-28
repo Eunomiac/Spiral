@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class BeatAnimation : MonoBehaviour
 {
 
     private float beatDuration;
+
     private Animator animator;
     private ParticleSystem particles;
+    private Text secDisplay;
 
 
     void Awake ()
@@ -17,12 +20,10 @@ public class BeatAnimation : MonoBehaviour
 
     void Start ()
     {
+
         AnimatorStateInfo beatState = animator.GetCurrentAnimatorStateInfo(0);
-        Debug.Log(beatState.IsName("BeatAnimation"));
         float conversionToBeat = beatState.length * animator.speed / beatDuration;
-        Debug.Log("BeatState = " + beatState.length + ", BeatDur = " + beatDuration + ", ConversionToBeat = " + conversionToBeat);
         animator.speed = conversionToBeat;
-        Debug.Log("New Duration = " + animator.GetCurrentAnimatorStateInfo(0).length);
     }
 
     public void FlashBeat ()
