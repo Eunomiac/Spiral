@@ -182,7 +182,8 @@ public class EnemyAI : MonoBehaviour
 
     public void Attack ()
     {
-        attackAlert.Play();
+        if ( attackAlert )
+            attackAlert.Play();
         Invoke("GoAttack", attackAlert.duration);
     }
 

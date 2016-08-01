@@ -25,7 +25,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441682}
-  - 114: {fileID: 11407504}
   m_Layer: 0
   m_Name: FIR_!CastFX
   m_TagString: Untagged
@@ -122,17 +121,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 441682}
   m_RootOrder: 1
---- !u!114 &11407504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a276a1ea6405e8d439c5d81f5dc66ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &19816638
 ParticleSystem:
   m_ObjectHideFlags: 1

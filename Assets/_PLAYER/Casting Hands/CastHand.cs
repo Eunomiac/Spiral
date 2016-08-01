@@ -4,63 +4,17 @@ public class CastHand : MonoBehaviour
 {
     private GameObject hand;
     private SpriteRenderer handSprite;
-    private HandState status;
     private Rotator rotator;
+    public HandState status;
 
     private INPUT input;
     private PLAYER player;
 
     public GameObject Hand { get { return hand; } }
-    public GameObject PreCastFX { get; set; }
-    public int? ButtonAxis { get; set; }
-    public SpellMaster SpellPrefab { get; set; }
-    public SpellMaster Spell { get; set; }
+    public HandState Status { get { return status; } protected set { status = value; } }
+    public float Speed { get; set; }
 
-    public enum HandState { AIMING, IDLE, PRECAST, STARTCAST, TAPCASTING, HOLDCASTING, ENDHOLDCAST, COUNTERCASTING, DUALCASTING, UPCASTING };
-
-    public HandState Status
-    {
-        get { return status; }
-        set {
-            status = value;
-            //Debug.Log(name + " = " + value.ToString());
-            switch ( status )
-            {
-                case HandState.AIMING:
-                    player.ActiveHand = this;
-                    FadeHand(false);
-                    break;
-                case HandState.IDLE:
-                    player.IdleHands.Push(this);
-                    player.ActiveHand = player.ActiveHand == this ? null : player.ActiveHand;
-                    player.CurrentHand = player.ActiveHand == this ? null : player.CurrentHand;
-                    FadeHand(true);
-                    ClearSpells();
-                    break;
-                case HandState.PRECAST:
-                    player.CurrentHand = this;
-                    player.ActiveHand = null;
-                    break;
-                case HandState.STARTCAST:
-                    break;
-                case HandState.TAPCASTING:
-                    Status = HandState.IDLE;
-                    break;
-                case HandState.HOLDCASTING:
-                    break;
-                case HandState.ENDHOLDCAST:
-                    break;
-                case HandState.COUNTERCASTING:
-                    break;
-                case HandState.DUALCASTING:
-                    break;
-                case HandState.UPCASTING:
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+    public enum HandState { AIMING, IDLE, PRECAST, STARTCAST, HOLDING, COUNTERING, DUALCASTING, UPCASTING };
 
     void Awake ()
     {
@@ -73,7 +27,7 @@ public class CastHand : MonoBehaviour
 
     void Start ()
     {
-        Status = HandState.IDLE;
+        SetStatus(HandState.IDLE);
     }
 
     void Update ()
@@ -82,70 +36,39 @@ public class CastHand : MonoBehaviour
         switch ( Status )
         {
             case HandState.AIMING:
-                if ( inputAngle == null )
-                    AimHandUp();
-                else
-                    rotator.rotate((float) inputAngle);
-                break;
             case HandState.IDLE:
-                if ( inputAngle != null )
-                    rotator.rotate((float) inputAngle, 3f);
-                break;
-            case HandState.PRECAST:
-                //rotator.rotate(targetAngle);
-                break;
-            case HandState.HOLDCASTING:
-                if ( inputAngle != null )
-                    rotator.rotate((float) inputAngle, Spell.HandSpeed);
-                break;
-            default:
+            case HandState.HOLDING:
+                if ( inputAngle == null && Status == HandState.AIMING )
+                    AimHandUp();
+                else if ( inputAngle != null )
+                    rotator.rotate((float) inputAngle, Speed);
                 break;
         }
     }
 
-    void AimHandUp ()
+    public void SetStatus (HandState newState)
     {
-        // Behaviour where AIMING hand is not being directed by stick.
+        //Debug.Log(name + " Hand Set From " + Status + " to " + newState);
+        Status = newState;
+        switch ( Status )
+        {
+            case HandState.AIMING:
+                FadeHand(false);
+                Speed = player.aimingHandSpeed;
+                break;
+            case HandState.IDLE:
+                FadeHand(true);
+                Speed = player.aimingHandSpeed * 0.3f;
+                break;
+        }
     }
+
+    void AimHandUp () { } // Behaviour where AIMING hand is not being directed by stick.
 
     public void FadeHand (bool isFadeOut)
     {
         Color thisColor = handSprite.color;
         thisColor.a = isFadeOut ? 0.3f : 1f;
         handSprite.color = thisColor;
-    }
-
-    public void PreCast (GameObject preCastFX, int buttonAxis)
-    {
-        ButtonAxis = buttonAxis;
-        PreCastFX = Instantiate(preCastFX);
-        PreCastFX.gameObject.SetParent(Hand.gameObject, false);
-        Status = HandState.PRECAST;
-    }
-
-    public void StartCast (SpellMaster spellDef)
-    {
-        System.Diagnostics.Trace.Assert(Status == HandState.PRECAST);
-        Destroy(PreCastFX.gameObject);
-        SpellPrefab = spellDef;
-        Spell = Instantiate(SpellPrefab);
-        Spell.gameObject.SetParent(Hand.gameObject, false);
-        Spell.Initialize();
-    }
-
-    public void ConfirmStatus (HandState state)
-    {
-        if ( Status != state )
-            Status = state;
-    }
-
-    public void ClearSpells ()
-    {
-        ButtonAxis = null;
-        SpellPrefab = null;
-        if ( PreCastFX )
-            Destroy(PreCastFX.gameObject);
-        PreCastFX = null;
-        Spell = null;
     }
 }

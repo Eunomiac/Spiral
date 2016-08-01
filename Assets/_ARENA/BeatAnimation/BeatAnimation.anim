@@ -33,8 +33,8 @@ AnimationClip:
         tangentMode: 0
       - time: 5.3333335
         value: {x: 0, y: 850, z: 0}
-        inSlope: {x: 0, y: 277.35077, z: 0}
-        outSlope: {x: 0, y: 277.35077, z: 0}
+        inSlope: {x: 0, y: 425.6579, z: 0}
+        outSlope: {x: 0, y: 425.6579, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -78,29 +78,27 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300014, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300036, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 0.1
-      value: {fileID: 21300016, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300038, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 0.2
-      value: {fileID: 21300018, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300040, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 0.3
-      value: {fileID: 21300020, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300042, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 0.4
-      value: {fileID: 21300022, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300044, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - time: 4.6666665
-      value: {fileID: 21300002, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300046, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - time: 4.6
+      value: {fileID: 21300026, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 4.9
-      value: {fileID: 21300004, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300028, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 5.0333333
-      value: {fileID: 21300006, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300030, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 5.1666665
-      value: {fileID: 21300008, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300032, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     - time: 5.233333
-      value: {fileID: 21300010, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - time: 5.3
-      value: {fileID: 21300012, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+      value: {fileID: 21300034, guid: babfd05192186e24aa7e50719ab81636, type: 3}
     attribute: m_Sprite
     path: Sprite
     classID: 212
@@ -131,18 +129,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300014, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300016, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300018, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300020, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300022, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300000, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300002, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300004, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300006, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300008, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300010, guid: babfd05192186e24aa7e50719ab81636, type: 3}
-    - {fileID: 21300012, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300036, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300038, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300040, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300042, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300044, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300046, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300026, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300028, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300030, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300032, guid: babfd05192186e24aa7e50719ab81636, type: 3}
+    - {fileID: 21300034, guid: babfd05192186e24aa7e50719ab81636, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -289,8 +286,8 @@ AnimationClip:
         tangentMode: 0
       - time: 5.3333335
         value: 850
-        inSlope: 277.35077
-        outSlope: 277.35077
+        inSlope: 425.6579
+        outSlope: 425.6579
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2

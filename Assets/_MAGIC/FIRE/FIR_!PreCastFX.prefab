@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 471824}
   - 198: {fileID: 19827892}
   - 199: {fileID: 19948010}
+  - 114: {fileID: 11465022}
   m_Layer: 0
   m_Name: FIR_!PreCastFX
   m_TagString: Untagged
@@ -30,6 +31,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11465022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be98b0dfc226e5a4d853957f4dad6100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castHandState: 0
+  handSpeedWhileCasting: 0
+  durationOverride: 0
+  effectObject: {fileID: 0}
+  startTime: 0
+  <CastingHand>k__BackingField: {fileID: 0}
+  <SpellMaster>k__BackingField: {fileID: 0}
+  StartCastFXPrefab: {fileID: 0}
+  StartCastSound: {fileID: 0}
+  Duration: 0
 --- !u!198 &19827892
 ParticleSystem:
   m_ObjectHideFlags: 1

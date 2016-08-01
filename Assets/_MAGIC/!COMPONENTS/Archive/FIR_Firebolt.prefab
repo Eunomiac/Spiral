@@ -43,9 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be98b0dfc226e5a4d853957f4dad6100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castHandState: 3
-  handSpeedWhileCasting: 0
-  StartCastFXPrefab: {fileID: 147804, guid: 17ed9b3b479bd0f4daa0096085e74193, type: 2}
+  isDirectable: 0
+  HandStates: 0000000000000000
+  HandSpeeds:
+  - 0
+  - 0
   StartCastSound: {fileID: 8300000, guid: ab10a85162de70d4e8c2c043ff4fc5ed, type: 3}
   Duration: 1
 --- !u!114 &11460460
@@ -59,28 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa318e1cac8af44d914e2a98e2beccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castHandState: 4
-  handSpeedWhileCasting: 0
-  numBolts: 3
-  travelTime: 0.5
-  timeBetweenBolts: 0.3
-  searchAngle: 60
-  minDist: 5
-  maxDist: 1000000
-  numDeviations: 1
-  minDev: 1
-  maxDev: 3
-  isTurningToFaceTarget: 1
-  isRandomizingStepDistance: 0
-  pathMax: 2
-  easingMode: 2
-  boltLaunchSFX:
-  - {fileID: 8300000, guid: 6e2f6c88946ef9444913804f1680da47, type: 3}
-  - {fileID: 8300000, guid: c2690e94e92e1be42a55006940f71ef4, type: 3}
-  - {fileID: 8300000, guid: a25e114e606607349b2d1ff18a899330, type: 3}
-  - {fileID: 8300000, guid: 8df467c33df76f24d9f5e4af7668c3be, type: 3}
-  - {fileID: 8300000, guid: de52394ce9a41dc45b86d4d1a9ae21bf, type: 3}
-  boltPrefab: {fileID: 128132, guid: 2360ba7a44838fc40babab6918493f3e, type: 2}
 --- !u!114 &11485232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,7 +72,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6048fe626dfde8c479f0728a0aa24ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpellName: Fire Bolt
 --- !u!114 &11486340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,13 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dadb635f1a6333d46bd43c77028969de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castHandState: 1
-  handSpeedWhileCasting: 0
-  damage: 25
-  knockback: 10000
-  explosionSFX:
-  - {fileID: 8300000, guid: 6a79d0a32b830174ea2b17eb9a82d4fa, type: 3}
-  explosionPrefab: {fileID: 121290, guid: 9e0f3b62aa4009c4f822604a8a3bef1b, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

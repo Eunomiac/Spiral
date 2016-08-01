@@ -1,4 +1,4 @@
-﻿public class HoldSpellCircleAimer : SpellEffect
+﻿public class HoldSpellCircleAimer : SpellEFF
 {
 
     // Use this for initialization

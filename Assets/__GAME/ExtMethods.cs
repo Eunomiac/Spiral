@@ -41,7 +41,7 @@ public static class ExtMethods
     // PUSH operation, adding item to the end of a list.  Returns true if item is unique, but will still add duplicates unless noDuplicates set to false.
     public static bool Push<T> (this List<T> list, T item, bool noDuplicates = true)
     {
-        if ( list.Contains(item) )
+        if ( noDuplicates && list.Contains(item) )
             return false;
         else
         {
@@ -161,7 +161,7 @@ public static class ExtMethods
         SpriteRenderer thisSprite = new GameObject(name, typeof(SpriteRenderer)).GetComponent<SpriteRenderer>();
         Sprite newSprite = (Resources.Load("IndicatorSprite") as GameObject).GetComponent<SpriteRenderer>().sprite;
         thisSprite.sprite = newSprite;
-        Debug.Log(newSprite.ToString());
+        //Debug.Log(newSprite.ToString());
         //thisSprite.material = Resources.Load("DefaultMaterial") as Material;
         thisSprite.color = color;
         thisSprite.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -176,7 +176,7 @@ public static class ExtMethods
 
     #endregion
 
-    #region GameObject and Transform Methods
+    #region GameObject, Transform, Child Methods
 
     // Iterates through children, destroying them all.
     public static void DestroyAllChildren (this Transform transform, bool isSelfDestructing = true)
@@ -198,6 +198,13 @@ public static class ExtMethods
         }
     }
 
+    // Returns a list of a GameObject's child components EXCLUDING any such components on the GameObject itself.
+    public static List<T> GetChildrenOfType<T> (this GameObject parent, bool includeInactive = true)
+    {
+        List<T> childComps = parent.GetComponentsInChildren<T>(true).ToList();
+        childComps.Remove(parent.GetComponent<T>());
+        return childComps;
+    }
 
     #endregion
 

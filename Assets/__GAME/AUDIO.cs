@@ -35,4 +35,9 @@ public class AUDIO : MonoBehaviour
         thisPlayer.volume = val;
     }
 
+    public void KillSound (GameObject sound)
+    {
+        Destroy(sound.gameObject);
+    }
+
 }

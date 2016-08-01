@@ -63,12 +63,12 @@ public class THREATS : MonoBehaviour
         return theseEnemies;
     }
 
-    public List<EnemyAI> GetClosestEnemies (float minAngle = 0f, float maxAngle = 360f, float minDist = 0f, float maxDist = GAME.BIGINT, int numEnemies = 0)
+    public List<EnemyAI> GetClosestEnemies (float minAngle = 0f, float maxAngle = 360f, float minDist = 0f, float maxDist = GAME.BIGINT, int numEnemies = GAME.BIGINT)
     {
+        Debug.Log("minAngle = " + minAngle + ", max = " + maxAngle + " minDist = " + minDist + ", maxDist = " + maxDist + " numEnemies = " + numEnemies);
         List<EnemyAI> theseEnemies = GetEnemies(minAngle, maxAngle);
-        if ( minDist > 0f && theseEnemies.Count > 0 )
-            while ( player.transform.position.Distance2D(theseEnemies[0].transform.position) < minDist )
-                theseEnemies.RemoveAt(0);
+        while ( minDist > 0f && theseEnemies.Count > 0 && player.transform.position.Distance2D(theseEnemies[0].transform.position) < minDist )
+            theseEnemies.RemoveAt(0);
         if ( maxDist < GAME.BIGINT && theseEnemies.Count > 0 )
             while ( player.transform.position.Distance2D(theseEnemies.Last().transform.position) > maxDist )
                 theseEnemies.Pop();
@@ -76,5 +76,14 @@ public class THREATS : MonoBehaviour
             return theseEnemies;
         else
             return theseEnemies.GetRange(0, numEnemies);
+    }
+
+    public EnemyAI GetClosestEnemy (float minAngle = 0f, float maxAngle = 360f, float minDist = 0f, float maxDist = GAME.BIGINT)
+    {
+        List<EnemyAI> theseEnemies = GetClosestEnemies(minAngle, maxAngle, minDist, maxDist, 1);
+        if ( theseEnemies.Count == 1 )
+            return theseEnemies[0];
+        else
+            return null;
     }
 }
